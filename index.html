@@ -1,0 +1,2175 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Relationship Platform</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+/* Tokens. --bp-* are shared with the Screens view. --cs-* are case study chrome only. */
+:root{
+  --bp-blue:#006FCF;
+  --bp-navy:#051757;
+  --bp-navy-2:#0B2470;
+  --bp-sky:#4987DA;
+  --bp-ink:#141A33;
+  --bp-grey-line:#E2E6EE;
+  --bp-font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  --cs-paper:#F6F4EF;
+  --cs-white:#FFFFFF;
+  --cs-ink:#11162C;
+  --cs-muted:#586078;
+  --cs-rule:#DCD8CE;
+  --cs-on-navy:#E9EEFA;
+  --cs-on-navy-muted:#A9B6D8;
+  --cs-teal:#2BA59A;
+  --cs-coral:#E4776F;
+  --cs-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --cs-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --cs-radius:18px;
+}
+
+/* Minimal reset */
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--cs-paper);color:var(--cs-ink);font-family:var(--bp-font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Grid pattern */
+.cs-grid{
+  background-color:var(--bp-navy);
+  background-image:
+    linear-gradient(rgba(73,135,218,.18) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(73,135,218,.18) 1px,transparent 1px),
+    linear-gradient(rgba(73,135,218,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(73,135,218,.07) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+}
+
+/* Site header and tabs */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(5,23,87,.94);backdrop-filter:saturate(140%) blur(10px);-webkit-backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(255,255,255,.08);color:#fff;font-family:var(--bp-font)}
+.site-header .bar{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);display:flex;align-items:center;gap:20px;min-height:64px}
+.site-header .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;flex:none}
+.site-header .brand svg{width:36px;height:36px;display:block;border-radius:4px}
+.site-header .brand span{font-weight:700;font-size:.95rem;letter-spacing:.01em;white-space:nowrap}
+.site-header .brand small{display:block;font-family:var(--cs-mono);font-weight:400;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs-on-navy-muted)}
+.site-header .tabs{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.site-header .tabs::-webkit-scrollbar{display:none}
+.site-header .tab{appearance:none;border:0;background:transparent;color:var(--cs-on-navy-muted);font:600 .9rem/1 var(--bp-font);padding:11px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.site-header .tab:hover{color:#fff;background:rgba(255,255,255,.07)}
+.site-header .tab[aria-selected="true"]{color:var(--bp-navy);background:#fff}
+.site-header .tab:focus-visible{outline:2px solid var(--bp-sky);outline-offset:2px}
+@media (max-width:560px){.site-header .bar{gap:12px}.site-header .brand span{display:none}.site-header .tab{padding:10px 12px;font-size:.85rem}}
+
+/* Case study and press views */
+.cs{font-size:1.0625rem;line-height:1.65}
+.cs .wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.cs .kicker{font-family:var(--cs-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bp-blue);margin:0 0 18px;display:flex;align-items:center;gap:12px}
+.cs .kicker::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.cs h1,.cs h2,.cs h3{font-family:var(--cs-serif);font-weight:500;letter-spacing:-.018em;margin:0}
+.cs h2{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.04;max-width:18ch}
+.cs h3{font-size:1.45rem;line-height:1.2}
+.cs p{margin:0 0 1.1em}
+.cs .lede{font-size:clamp(1.15rem,1.7vw,1.35rem);line-height:1.55;color:var(--cs-muted);max-width:60ch}
+.cs .prose{max-width:62ch}
+.cs .prose p{color:#2A3048}
+.cs .chapter{padding-block:clamp(72px,10vw,136px);position:relative}
+.cs .chapter.white{background:var(--cs-white)}
+.cs .chapter.navy{color:var(--cs-on-navy)}
+.cs .chapter.navy .kicker{color:#8FB6F0}
+.cs .chapter.navy .lede,.cs .chapter.navy .prose p{color:var(--cs-on-navy-muted)}
+.cs .chapter-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+@media (max-width:860px){.cs .chapter-head{grid-template-columns:1fr}}
+.cs .source{font-family:var(--cs-mono);font-size:.72rem;line-height:1.6;color:var(--cs-muted);letter-spacing:.02em}
+.cs .source a{color:inherit}
+.cs a{color:var(--bp-blue)}
+
+/* Reveal */
+.js .cs .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .cs .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .cs .reveal{opacity:1;transform:none;transition:none}}
+
+/* Hero */
+.cs .hero{color:#fff;overflow:hidden;position:relative}
+.cs .hero::after{content:"";position:absolute;inset:auto -10% -40% 30%;height:80%;background:radial-gradient(closest-side,rgba(0,111,207,.55),transparent);pointer-events:none}
+.cs .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,64px);align-items:center;padding-block:clamp(56px,9vw,120px) clamp(48px,7vw,96px)}
+@media (max-width:920px){.cs .hero .wrap{grid-template-columns:1fr}}
+.cs .hero .kicker{color:#8FB6F0}
+.cs .hero h1{font-size:clamp(2.7rem,6.2vw,5.6rem);line-height:1;max-width:14ch}
+.cs .hero h1 em{font-style:italic;color:#9CC3FF}
+.cs .hero .lede{color:var(--cs-on-navy-muted);margin-top:28px;max-width:52ch}
+.cs .byline{margin-top:28px;font-family:var(--cs-mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cs-on-navy-muted)}
+.cs .byline b{color:#fff;font-weight:500}
+.cs .proof{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:var(--cs-radius);overflow:hidden;margin-top:clamp(20px,4vw,40px)}
+.cs .proof div{background:linear-gradient(180deg,rgba(11,36,112,.92),rgba(5,23,87,.92));padding:22px 24px}
+.cs .proof b{display:block;font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.05;color:#fff;letter-spacing:-.01em}
+.cs .proof span{display:block;margin-top:8px;font-size:.86rem;line-height:1.4;color:var(--cs-on-navy-muted)}
+@media (max-width:760px){.cs .proof{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cs .proof-note{grid-column:1/-1;margin:18px 0 0;max-width:78ch;font-size:.98rem;line-height:1.55;color:var(--cs-on-navy-muted);border-left:2px solid rgba(111,176,255,.5);padding-left:18px}
+.cs .proof-note strong{color:#fff;font-weight:600}
+
+/* Hero device */
+.cs .device-stage{position:relative;display:flex;justify-content:center;min-height:560px}
+.cs .phone{width:290px;height:600px;border-radius:48px;padding:11px;background:linear-gradient(145deg,#2a2e38,#0b0d12 40%,#1b1e26);box-shadow:0 50px 90px -30px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.08) inset;transform:perspective(1800px) rotateY(-14deg) rotateX(5deg) rotateZ(1deg);position:relative}
+.cs .phone::after{content:"";position:absolute;inset:11px;border-radius:38px;background:linear-gradient(115deg,rgba(255,255,255,.18),transparent 32%);pointer-events:none}
+.cs .screen{width:100%;height:100%;border-radius:38px;overflow:hidden;background:#F3F5F9;position:relative;font-family:var(--bp-font);color:#1B2240}
+.cs .screen .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:96px;height:26px;border-radius:20px;background:#0b0d12;z-index:3}
+.cs .app-top{padding:48px 18px 70px;color:#fff}
+.cs .app-top .icons{display:flex;justify-content:space-between;opacity:.9;margin-bottom:18px}
+.cs .app-top .icons i{display:block;width:18px;height:18px;border:1.6px solid #fff;border-radius:50%}
+.cs .app-top .icons i+i{border-radius:4px}
+.cs .app-top small{display:block;font-size:.66rem;color:#B9C6EA}
+.cs .app-top strong{display:block;font-size:1.02rem;font-weight:700;margin-top:3px}
+.cs .pills{display:flex;gap:8px;margin-top:14px;white-space:nowrap}
+.cs .pills span{background:#fff;color:var(--bp-blue);font-size:.64rem;font-weight:600;padding:7px 11px;border-radius:999px}
+.cs .app-card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(20,26,51,.08);margin:0 12px 10px;padding:12px 14px;font-size:.66rem}
+.cs .app-card.lift{margin-top:-54px;position:relative}
+.cs .app-card h5{margin:0 0 8px;font-size:.72rem;font-weight:600;display:flex;justify-content:space-between}
+.cs .flow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cs .flow div{border-left:3px solid var(--cs-teal);padding-left:8px}
+.cs .flow div+div{border-color:var(--cs-coral)}
+.cs .flow small{display:block;color:#6B7390;font-size:.6rem}
+.cs .flow b{font-size:.84rem}
+.cs .row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-top:1px solid #EEF0F5}
+.cs .row:first-of-type{border-top:0}
+.cs .row .who{display:flex;gap:8px;align-items:center}
+.cs .row .logo{width:22px;height:22px;border-radius:4px;background:var(--bp-blue);flex:none}
+.cs .row .logo.bank{background:#EEF1F7;border:1px solid #D9DEEA}
+.cs .row .logo.card{background:linear-gradient(135deg,#d9dde4,#9aa3b1);height:15px;width:22px;border-radius:2px}
+.cs .row small{display:block;color:#7A8197;font-size:.56rem}
+.cs .row b{font-weight:600;font-size:.66rem}
+.cs .group{font-weight:700;font-size:.7rem;display:flex;justify-content:space-between;margin:4px 0 2px}
+.cs .float{position:absolute;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:16px;color:#fff;padding:14px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,.5);font-size:.78rem;line-height:1.35}
+.cs .float small{display:block;font-family:var(--cs-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#B9C9EE;margin-bottom:6px}
+.cs .float.forecast{left:-6%;bottom:14%;width:210px}
+.cs .float.forecast svg{display:block;width:100%;height:54px;margin-top:6px}
+.cs .float.offer{right:-2%;top:12%;width:190px}
+.cs .float.offer b{display:block;font-size:.95rem}
+@media (max-width:920px){.cs .float.forecast{left:0}.cs .float.offer{right:0}}
+@media (max-width:420px){.cs .float{display:none}.cs .device-stage{min-height:520px}.cs .phone{transform:none}}
+
+/* 01 Company stats */
+.cs .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--cs-rule)}
+.cs .stat{padding:30px 28px 30px 0;border-bottom:1px solid var(--cs-rule)}
+.cs .stat:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--cs-rule)}
+.cs .stat b{display:block;font-family:var(--cs-serif);font-weight:500;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1;letter-spacing:-.025em;color:var(--bp-navy)}
+.cs .stat b sup{font-size:.4em;vertical-align:super;letter-spacing:0;color:var(--cs-muted)}
+.cs .stat span{display:block;margin-top:12px;font-size:.95rem;color:var(--cs-muted);max-width:26ch}
+@media (max-width:760px){.cs .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cs .stat,.cs .stat:not(:nth-child(3n+1)){padding:22px 16px 22px 0;border-left:0}.cs .stat:nth-child(2n){padding-left:16px;border-left:1px solid var(--cs-rule)}}
+.cs .callout{margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--bp-navy);color:#fff;border-radius:var(--cs-radius);padding:28px clamp(20px,4vw,36px)}
+.cs .callout b{font-family:var(--cs-serif);font-weight:500;font-size:clamp(2.8rem,6vw,4.4rem);line-height:1;color:#9CC3FF}
+.cs .callout p{margin:0;color:var(--cs-on-navy);font-size:1.08rem;max-width:56ch}
+@media (max-width:560px){.cs .callout{grid-template-columns:1fr}}
+
+/* 02 Mandate */
+.cs .mandate{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,6vw,88px);align-items:start}
+@media (max-width:900px){.cs .mandate{grid-template-columns:1fr}}
+.cs .pull{font-family:var(--cs-serif);font-style:italic;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.2;color:var(--bp-navy);border-left:3px solid var(--bp-blue);padding-left:24px;margin:36px 0}
+.cs .equation{background:var(--cs-white);border:1px solid var(--cs-rule);border-radius:var(--cs-radius);padding:28px;box-shadow:0 30px 60px -40px rgba(5,23,87,.35)}
+.cs .equation .eq{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:14px 0 10px}
+.cs .equation .term{font-family:var(--cs-serif);font-size:clamp(1.3rem,2.4vw,1.7rem);background:#EEF4FC;color:var(--bp-navy);padding:10px 16px;border-radius:12px}
+.cs .equation .op{font-family:var(--cs-serif);font-size:1.6rem;color:var(--cs-muted)}
+.cs .equation p{margin:0;color:var(--cs-muted);font-size:.95rem}
+.cs .flywheel{margin-top:28px}
+.cs .flywheel svg{width:100%;max-width:420px;display:block;margin:0 auto}
+.cs .deal{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:center;color:#fff;border-radius:24px;padding:clamp(28px,5vw,56px);position:relative;overflow:hidden}
+.cs .deal h3{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.08;margin-bottom:16px}
+.cs .deal p{color:var(--cs-on-navy-muted)}
+.cs .deal .kicker{color:#8FB6F0}
+@media (max-width:900px){.cs .deal{grid-template-columns:1fr}}
+.cs .conditions{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.cs .conditions li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px 18px;color:var(--cs-on-navy)}
+.cs .conditions li b{display:block;color:#fff;font-weight:600;margin-bottom:2px}
+.cs .timeline{margin-top:clamp(48px,7vw,80px);position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+.cs .timeline::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,var(--cs-rule),var(--bp-blue))}
+.cs .tl{position:relative;padding:34px 14px 0 0}
+.cs .tl::before{content:"";position:absolute;top:2px;left:0;width:16px;height:16px;border-radius:50%;background:var(--cs-white);border:2px solid var(--bp-blue)}
+.cs .tl.key::before{background:var(--bp-blue);box-shadow:0 0 0 6px rgba(0,111,207,.15)}
+.cs .tl time{display:block;font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bp-blue)}
+.cs .tl span{display:block;margin-top:6px;font-size:.92rem;line-height:1.4;color:#2A3048}
+@media (max-width:900px){
+  .cs .timeline{grid-template-columns:1fr;gap:18px;padding-left:28px}
+  .cs .timeline::before{left:7px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--cs-rule),var(--bp-blue))}
+  .cs .tl{padding:0}
+  .cs .tl::before{left:-28px}
+}
+.cs .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:clamp(48px,7vw,80px)}
+.cs .pillar{background:var(--cs-paper);border-radius:var(--cs-radius);padding:26px}
+.cs .pillar small{font-family:var(--cs-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bp-blue)}
+.cs .pillar h3{margin:10px 0 10px}
+.cs .pillar p{margin:0;color:var(--cs-muted);font-size:.98rem}
+@media (max-width:860px){.cs .pillars{grid-template-columns:1fr}}
+
+/* 03 Platform stack */
+.cs .era-switch{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px;margin-bottom:20px}
+.cs .era-switch button{appearance:none;border:0;background:transparent;color:var(--cs-on-navy-muted);font:600 .9rem/1 var(--bp-font);padding:11px 18px;border-radius:999px;cursor:pointer}
+.cs .era-switch button[aria-pressed="true"]{background:#fff;color:var(--bp-navy)}
+.cs .era-switch button:focus-visible{outline:2px solid var(--bp-sky);outline-offset:2px}
+.cs .era-switch small{font-family:var(--cs-mono);font-weight:400;font-size:.72rem;margin-left:6px;opacity:.8}
+.cs .legend{display:flex;flex-wrap:wrap;gap:18px;font-size:.84rem;color:var(--cs-on-navy-muted);margin:0 0 20px}
+.cs .legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:8px;vertical-align:-1px}
+.cs .legend .l-new{background:var(--bp-blue);box-shadow:0 0 0 3px rgba(0,111,207,.3)}
+.cs .legend .l-out{border:1.5px dashed var(--cs-on-navy-muted)}
+.cs .stack{display:grid;gap:10px}
+.cs .band{display:grid;grid-template-columns:210px minmax(0,1fr);gap:16px;align-items:center;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 16px}
+.cs .band .name{font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#9FB8E6;line-height:1.5}
+.cs .band .name em{display:block;font-family:var(--bp-font);font-style:normal;letter-spacing:0;text-transform:none;font-size:.8rem;color:var(--cs-on-navy-muted);margin-top:2px}
+.cs .chips{display:flex;flex-wrap:wrap;gap:8px}
+.cs .chip{font-size:.84rem;font-weight:500;background:rgba(255,255,255,.94);color:var(--bp-navy);padding:7px 12px;border-radius:999px;line-height:1.2;transition:background .35s,color .35s,box-shadow .35s}
+.cs .chip small{font-size:.7rem;color:#5A6A95;margin-left:6px;font-weight:400}
+.cs .band-note{display:none;margin:0;font-size:.9rem;color:var(--cs-on-navy-muted);font-style:italic}
+.cs .stack[data-era="build"] .chip[data-era="scale"]{display:none}
+.cs .stack[data-era="build"] .band[data-era="scale"]{border-style:dashed;background:transparent}
+.cs .stack[data-era="build"] .band[data-era="scale"] .chips{display:none}
+.cs .stack[data-era="build"] .band[data-era="scale"] .band-note{display:block}
+.cs .stack[data-era="build"] .band[data-era="scale"] .name{opacity:.55}
+.cs .stack[data-era="scale"] .chip[data-era="scale"],.cs .stack[data-era="scale"] .band[data-era="scale"] .chip{background:var(--bp-blue);color:#fff;box-shadow:0 0 0 3px rgba(0,111,207,.28)}
+.cs .stack[data-era="scale"] .chip[data-era="scale"] small,.cs .stack[data-era="scale"] .band[data-era="scale"] .chip small{color:#CFE2FA}
+.cs .stack[data-era="scale"] .chip[data-era="build"]{background:transparent;color:var(--cs-on-navy-muted);box-shadow:inset 0 0 0 1.5px rgba(169,182,216,.6)}
+@media (max-width:720px){.cs .band{grid-template-columns:1fr;gap:10px}}
+.cs .changes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
+.cs .changes div{border-radius:14px;padding:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
+.cs .changes small{font-family:var(--cs-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+.cs .changes .in small{color:#7FB4FF}
+.cs .changes .out small{color:#F2A69F}
+.cs .changes b{display:block;color:#fff;font-weight:600;margin:6px 0 4px}
+.cs .changes p{margin:0;font-size:.9rem;line-height:1.5;color:var(--cs-on-navy-muted)}
+@media (max-width:900px){.cs .changes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.cs .changes{grid-template-columns:1fr}}
+
+/* Left-hand section nav, case study view only, wide viewports only */
+.cs .side-nav{position:fixed;left:0;top:64px;bottom:0;width:184px;z-index:40;display:none;flex-direction:column;justify-content:center;gap:20px;padding:40px 30px;background:rgba(5,23,87,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-right:1px solid rgba(255,255,255,.08)}
+.cs .side-nav a{position:relative;display:flex;align-items:center;gap:12px;color:var(--cs-on-navy-muted);text-decoration:none;font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.cs .side-nav a .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);flex:none;transition:background .2s,transform .2s,box-shadow .2s}
+.cs .side-nav a:hover{color:#fff}
+.cs .side-nav a.active{color:#fff}
+.cs .side-nav a.active .dot{background:var(--bp-sky,#6FB0FF);transform:scale(1.5);box-shadow:0 0 0 4px rgba(111,176,255,.25)}
+@media (min-width:1600px){.cs .side-nav{display:flex}}
+
+/* 03 Ecosystem frame, product houses, runs-on rail */
+.cs .eco{position:relative;border:1.5px dashed rgba(169,182,216,.55);border-radius:24px;padding:clamp(22px,3vw,34px);margin-top:8px}
+.cs .eco-label,.cs .pp-label{position:absolute;top:-10px;left:24px;background:var(--bp-navy);padding:0 12px;font-family:var(--cs-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#9FB8E6}
+.cs .domain-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;align-items:start;margin-bottom:22px}
+.cs .houses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.cs .house{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:22px 18px;min-height:112px;display:flex;flex-direction:column;justify-content:center}
+.cs .house b{font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.15rem,1.9vw,1.5rem);color:#fff;line-height:1.15}
+.cs .house span{margin-top:8px;font-size:.78rem;color:var(--cs-on-navy-muted)}
+.cs .houses-note{margin:0;font-size:.88rem;color:var(--cs-on-navy-muted)}
+.cs .domain-group{position:relative;border:1.5px dashed rgba(111,176,255,.6);border-radius:26px;padding:26px 14px 14px;height:100%}
+.cs .domain-label{position:absolute;top:-10px;left:20px;background:var(--bp-navy);padding:0 12px;font-family:var(--cs-mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:#9CC3FF}
+.cs .domain-boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
+.cs .domain-box{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.cs .domain-box b{font-family:var(--cs-serif);font-weight:500;font-size:1.05rem;color:#fff;line-height:1.2}
+.cs .domain-box span{font-size:.78rem;color:var(--cs-on-navy-muted)}
+.cs .domain-box .chips{margin-top:2px}
+.cs .domain-down{text-align:center;color:#9CC3FF;font-size:1.3rem;margin:0 0 16px;line-height:1}
+.cs .eco-body{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px;align-items:start}
+.cs .platform-panel{position:relative;background:rgba(0,111,207,.10);border:1px solid rgba(111,176,255,.35);border-radius:20px;padding:26px 18px 18px}
+.cs .platform-panel .pp-label{background:#0A2059;color:#9CC3FF;top:-10px}
+.cs .runs-on{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:22px 18px}
+.cs .runs-on h4{margin:0 0 6px;font-family:var(--cs-mono);font-weight:400;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9FB8E6}
+.cs .ro-group{margin:16px 0 8px;font-size:.8rem;font-weight:600;color:#fff}
+.cs .runs-on .chips{gap:6px}
+.cs .runs-on .chip{font-size:.78rem;padding:6px 10px}
+.cs .ro-note{margin:16px 0 0;font-size:.82rem;line-height:1.5;color:var(--cs-on-navy-muted)}
+.cs .eco[data-era="scale"] .house[data-era="build"]{display:none}
+.cs .eco[data-era="build"] .house[data-era="scale"]{display:none}
+.cs .eco[data-era="build"] .runs-on .chip[data-era="scale"]{display:none}
+.cs .eco[data-era="scale"] .runs-on .chip[data-era="build"]{background:transparent;color:var(--cs-on-navy-muted);box-shadow:inset 0 0 0 1.5px rgba(169,182,216,.6)}
+@media (max-width:1000px){.cs .eco-body{grid-template-columns:1fr}}
+@media (max-width:860px){.cs .domain-row{grid-template-columns:1fr}.cs .domain-boxes{grid-template-columns:1fr}}
+@media (max-width:520px){.cs .houses{grid-template-columns:1fr}}
+
+/* 03 Built, bought, borrowed */
+.cs .bbb{margin-top:clamp(32px,5vw,56px);overflow-x:auto}
+.cs .bbb h3{font-size:clamp(1.4rem,2.4vw,1.9rem);margin-bottom:8px}
+.cs .bbb p.sub{color:var(--cs-on-navy-muted);max-width:62ch;margin-bottom:18px}
+.cs .bbb table{width:100%;min-width:640px;border-collapse:collapse;font-size:.92rem}
+.cs .bbb th{text-align:left;font-family:var(--cs-mono);font-weight:400;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#9FB8E6;padding:0 16px 10px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.cs .bbb td{padding:14px 16px 14px 0;border-bottom:1px solid rgba(255,255,255,.1);color:var(--cs-on-navy);vertical-align:top}
+.cs .bbb td:first-child{color:#fff;font-weight:600}
+.cs .bbb td small{display:block;color:var(--cs-on-navy-muted);font-size:.8rem;margin-top:3px}
+
+/* 03 What the data layer fed */
+.cs .fan{margin-top:clamp(32px,5vw,56px)}
+.cs .fan-source{background:linear-gradient(90deg,var(--bp-blue),#0A2A86);border-radius:16px;padding:18px 24px;color:#fff;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+.cs .fan-source b{font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.2rem,2.2vw,1.6rem)}
+.cs .fan-source span{font-size:.9rem;color:#CFE2FA}
+.cs .fan-arrows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cs .fan-arrows>div{position:relative;padding-top:30px}
+.cs .fan-arrows>div::before{content:"";position:absolute;top:0;left:50%;width:1px;height:22px;background:linear-gradient(180deg,rgba(111,176,255,.9),rgba(111,176,255,.25))}
+.cs .fan-col{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px}
+.cs .fan-col h4{margin:0 0 12px;font-family:var(--cs-mono);font-weight:400;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#7FB4FF}
+.cs .fan-col ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.cs .fan-col li{font-size:.92rem;line-height:1.45;color:var(--cs-on-navy);padding-left:16px;position:relative}
+.cs .fan-col li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--bp-blue)}
+@media (max-width:860px){.cs .fan-arrows{grid-template-columns:1fr}.cs .fan-arrows>div::before{left:24px}}
+
+/* 04 Structure */
+.cs .compare{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);gap:clamp(16px,3vw,36px);align-items:center}
+@media (max-width:980px){.cs .compare{grid-template-columns:1fr}.cs .compare .arrow{transform:rotate(90deg);justify-self:center}}
+.cs .diagram-label{font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs-muted);margin-bottom:14px}
+.cs .silos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cs .silo{background:var(--cs-paper);border:1px solid var(--cs-rule);border-radius:12px;padding:10px 8px;display:grid;gap:6px}
+.cs .silo h4{margin:0 0 4px;font:600 .8rem/1.2 var(--bp-font);text-align:center;color:var(--bp-navy)}
+.cs .silo span{display:block;font-size:.68rem;text-align:center;padding:6px 2px;border-radius:6px;background:#FBE9E6;color:#9A4A43}
+.cs .silos-note{margin-top:12px;font-size:.88rem;color:#9A4A43}
+.cs .arrow{font-size:2rem;color:var(--bp-blue)}
+.cs .hubs-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cs .hubs-grid .prod{font:600 .8rem/1.2 var(--bp-font);text-align:center;color:var(--bp-navy);background:var(--cs-paper);border:1px solid var(--cs-rule);border-radius:10px;padding:9px 4px}
+.cs .hubs-grid .hub{grid-column:1/-1;border-radius:12px;padding:12px 16px;color:#fff;background:linear-gradient(90deg,var(--bp-navy),var(--bp-blue));display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.92rem;font-weight:600;box-shadow:0 14px 30px -18px rgba(0,111,207,.7)}
+.cs .hubs-grid .hub small{font-weight:400;font-size:.74rem;color:#CFE2FA;text-align:right}
+.cs .hubs-note{margin-top:12px;font-size:.88rem;color:var(--bp-blue)}
+.cs .hub-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(40px,6vw,64px)}
+.cs .hub-card{background:var(--cs-paper);border-radius:var(--cs-radius);padding:22px;border-top:3px solid var(--bp-blue)}
+.cs .hub-card small{font-family:var(--cs-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs-muted)}
+.cs .hub-card h3{font-size:1.3rem;margin:8px 0 10px}
+.cs .hub-card p{margin:0;font-size:.93rem;color:var(--cs-muted);line-height:1.55}
+.cs .hub-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:.88rem;font-weight:600;color:var(--bp-blue);text-decoration:none;border-bottom:1px solid rgba(0,111,207,.35);padding-bottom:2px;transition:gap .2s,border-color .2s}
+.cs .hub-link:hover{gap:12px;border-color:var(--bp-blue)}
+.cs .hub-link:focus-visible{outline:3px solid var(--bp-blue);outline-offset:3px}
+@media print{.cs .hub-link{display:none}}
+@media (max-width:980px){.cs .hub-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cs .hub-cards{grid-template-columns:1fr}}
+.cs .hold{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:clamp(40px,6vw,64px)}
+@media (max-width:860px){.cs .hold{grid-template-columns:1fr}}
+.cs .panel{border-radius:22px;padding:clamp(24px,4vw,40px);background:var(--bp-navy);color:#fff;position:relative;overflow:hidden}
+.cs .panel.light{background:var(--cs-paper);color:var(--cs-ink)}
+.cs .panel h3{font-size:clamp(1.5rem,2.6vw,2rem);margin:6px 0 14px}
+.cs .panel p{color:var(--cs-on-navy-muted);font-size:.98rem}
+.cs .panel.light p{color:var(--cs-muted)}
+.cs .panel .kicker{margin-bottom:8px}
+.cs .panel:not(.light) .kicker{color:#8FB6F0}
+.cs .score{display:grid;gap:14px;margin-top:22px}
+.cs .score .lbl{display:flex;justify-content:space-between;gap:12px;font-size:.84rem;color:var(--cs-on-navy);margin-bottom:6px}
+.cs .score .track{height:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;display:flex}
+.cs .score .track i{display:block;height:100%}
+.cs .score .own{background:rgba(255,255,255,.3)}
+.cs .score .theirs{background:var(--bp-blue)}
+.cs .score .hatch{background:repeating-linear-gradient(135deg,var(--bp-blue) 0 6px,rgba(0,111,207,.35) 6px 12px)}
+.cs .owners{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.cs .owners div{font-size:.84rem;background:rgba(255,255,255,.06);border-radius:10px;padding:10px 12px;color:var(--cs-on-navy)}
+.cs .owners b{display:block;color:#fff;font-weight:600}
+.cs .costout{margin-top:26px}
+.cs .costout .track{display:flex;height:64px;border-radius:14px;overflow:hidden}
+.cs .costout .never{flex:0 0 62.5%;background:linear-gradient(90deg,var(--bp-blue),#3A93E3);color:#fff}
+.cs .costout .cut{flex:1;background:var(--bp-navy);color:#fff}
+.cs .costout .track div{display:flex;align-items:center;padding:0 16px;font-size:.88rem;font-weight:600}
+.cs .costout p{margin-top:14px}
+.cs .app-proof{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center;color:#fff;border-radius:22px;padding:clamp(24px,4vw,44px)}
+.cs .app-proof h3{font-size:clamp(1.6rem,3vw,2.3rem);margin:6px 0 12px}
+.cs .app-proof p{color:var(--cs-on-navy-muted)}
+.cs .app-proof .kicker{color:#8FB6F0}
+.cs .app-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cs .app-metrics div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px}
+.cs .app-metrics b{display:block;font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.1}
+.cs .app-metrics span{font-size:.84rem;color:var(--cs-on-navy-muted)}
+.cs .go{display:inline-flex;align-items:center;gap:10px;margin-top:8px;background:#fff;color:var(--bp-navy);text-decoration:none;font-weight:600;font-size:.92rem;padding:12px 18px;border-radius:999px;transition:transform .2s}
+.cs .go:hover{transform:translateX(3px)}
+.cs .go:focus-visible{outline:3px solid var(--bp-sky);outline-offset:3px}
+@media (max-width:860px){.cs .app-proof{grid-template-columns:1fr}}
+
+/* 05 Operating model */
+.cs .cadence{background:var(--cs-white);border:1px solid var(--cs-rule);border-radius:22px;padding:clamp(22px,4vw,40px);box-shadow:0 30px 60px -45px rgba(5,23,87,.4)}
+.cs .cadence-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end;margin-bottom:26px}
+.cs .cadence-head h3{font-size:clamp(1.5rem,2.8vw,2.1rem);max-width:22ch}
+.cs .cadence-head .big{font-family:var(--cs-serif);font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;color:var(--bp-blue)}
+.cs .cadence-head .big small{display:block;font-family:var(--bp-font);font-size:.84rem;color:var(--cs-muted);margin-top:6px}
+.cs .lane{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;margin-top:14px}
+.cs .lane .who{font-size:.86rem;color:var(--cs-muted)}
+.cs .lane .who b{display:block;color:var(--cs-ink)}
+.cs .axis{position:relative;height:40px;margin-right:14px;border-radius:10px;background:repeating-linear-gradient(90deg,#F1EFE9 0 calc(20% - 3px),transparent calc(20% - 3px) 20%)}
+.cs .axis .ship{position:absolute;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:var(--bp-blue);box-shadow:0 0 0 5px rgba(0,111,207,.16)}
+.cs .axis.old .ship{background:#9AA1B4;box-shadow:0 0 0 5px rgba(154,161,180,.2)}
+.cs .ticks{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;margin-top:10px}
+.cs .ticks div{display:flex;justify-content:space-between;font-family:var(--cs-mono);font-size:.66rem;color:var(--cs-muted);margin-right:8px}
+@media (max-width:560px){.cs .lane,.cs .ticks{grid-template-columns:1fr}.cs .ticks>span{display:none}}
+.cs .levers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.cs .lever{background:var(--cs-white);border:1px solid var(--cs-rule);border-radius:var(--cs-radius);padding:22px}
+.cs .lever .n{font-family:var(--cs-mono);font-size:.7rem;color:var(--bp-blue);letter-spacing:.12em}
+.cs .lever h3{font-size:1.22rem;margin:10px 0 8px}
+.cs .lever p{margin:0;font-size:.93rem;color:var(--cs-muted);line-height:1.55}
+@media (max-width:980px){.cs .levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cs .levers{grid-template-columns:1fr}}
+.cs .tiers{margin-top:18px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center;color:#fff;border-radius:22px;padding:clamp(24px,4vw,44px)}
+.cs .tiers h3{font-size:clamp(1.5rem,2.8vw,2.1rem);margin:6px 0 12px}
+.cs .tiers p{color:var(--cs-on-navy-muted)}
+.cs .tiers .kicker{color:#8FB6F0}
+.cs .tier-list{display:grid;gap:10px}
+.cs .tier{display:grid;grid-template-columns:90px 1fr;gap:16px;align-items:center;border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.cs .tier:nth-child(2){margin-left:6%}
+.cs .tier:nth-child(3){margin-left:12%}
+.cs .tier .t{font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#7FB4FF}
+.cs .tier b{display:block;font-weight:600;color:#fff}
+.cs .tier span{font-size:.86rem;color:var(--cs-on-navy-muted)}
+@media (max-width:860px){.cs .tiers{grid-template-columns:1fr}.cs .tier:nth-child(n){margin:0}}
+
+/* 06 Culture */
+.cs .principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--cs-rule);border:1px solid var(--cs-rule);border-radius:22px;overflow:hidden}
+.cs .principle{background:var(--cs-white);padding:clamp(22px,3vw,32px)}
+.cs .principle .n{font-family:var(--cs-serif);font-style:italic;font-size:2rem;color:var(--bp-blue);line-height:1}
+.cs .principle h3{font-size:1.3rem;margin:12px 0 8px}
+.cs .principle p{margin:0;font-size:.95rem;color:var(--cs-muted)}
+@media (max-width:900px){.cs .principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cs .principles{grid-template-columns:1fr}}
+.cs .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+.cs .people div{border-radius:var(--cs-radius);padding:26px;background:var(--bp-navy);color:#fff}
+.cs .people b{display:block;font-family:var(--cs-serif);font-weight:500;font-size:clamp(2.2rem,4vw,3rem);line-height:1;color:#9CC3FF}
+.cs .people span{display:block;margin-top:10px;color:var(--cs-on-navy-muted);font-size:.95rem}
+@media (max-width:760px){.cs .people{grid-template-columns:1fr}}
+
+/* 07 Results */
+.cs .primacy{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,72px);align-items:center;margin-bottom:clamp(40px,6vw,64px)}
+@media (max-width:860px){.cs .primacy{grid-template-columns:1fr}}
+.cs .primacy h3{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.1;margin:6px 0 12px;color:#fff}
+.cs .bars{display:grid;gap:26px}
+.cs .bar-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px;color:var(--cs-on-navy)}
+.cs .bar-head b{font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);color:#fff;white-space:nowrap}
+.cs .bar-head b em{font-style:normal;color:var(--cs-on-navy-muted);font-size:.6em}
+.cs .bar{position:relative;height:18px;border-radius:999px;background:rgba(255,255,255,.08)}
+.cs .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.cs .bar .before{background:rgba(255,255,255,.34)}
+.cs .bar .after{background:linear-gradient(90deg,var(--bp-blue),#6FB0FF);box-shadow:0 0 24px rgba(0,111,207,.6)}
+.js .cs .bar .after{transform-origin:left;transform:scaleX(0);transition:transform 1.4s cubic-bezier(.2,.7,.2,1) .2s}
+.js .cs .in .bar .after{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){.js .cs .bar .after{transform:none;transition:none}}
+.cs .bar-key{display:flex;gap:18px;font-size:.8rem;color:var(--cs-on-navy-muted)}
+.cs .bar-key i{display:inline-block;width:18px;height:8px;border-radius:4px;margin-right:6px;vertical-align:1px}
+.cs .results{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cs .rgroup{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:22px}
+.cs .rgroup h4{margin:0 0 14px;font-family:var(--cs-mono);font-weight:400;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#7FB4FF}
+.cs .rgroup div{padding:12px 0;border-top:1px solid rgba(255,255,255,.1)}
+.cs .rgroup div:first-of-type{border-top:0;padding-top:0}
+.cs .rgroup b{display:block;font-family:var(--cs-serif);font-weight:500;font-size:1.65rem;line-height:1.1;color:#fff}
+.cs .rgroup span{display:block;font-size:.86rem;line-height:1.45;color:var(--cs-on-navy-muted);margin-top:4px}
+@media (max-width:1000px){.cs .results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cs .results{grid-template-columns:1fr}}
+.cs .recognition{margin-top:18px;border-radius:20px;padding:22px 26px;background:rgba(255,255,255,.95);color:var(--bp-navy);display:flex;flex-wrap:wrap;gap:8px 32px;align-items:center}
+.cs .recognition b{font-family:var(--cs-serif);font-weight:500;font-size:1.5rem}
+.cs .recognition span{color:var(--cs-muted);font-size:.95rem}
+
+/* 08 Next */
+.cs .next{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cs .next a{display:block;text-decoration:none;border-radius:24px;padding:clamp(26px,4vw,44px);min-height:240px;position:relative;overflow:hidden;color:#fff;transition:transform .3s}
+.cs .next a:hover{transform:translateY(-4px)}
+.cs .next a:focus-visible{outline:3px solid var(--bp-sky);outline-offset:3px}
+.cs .next .to-press{background:var(--cs-ink)}
+.cs .next small{font-family:var(--cs-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#CFE2FA}
+.cs .next h3{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:10px 0 10px;color:#fff}
+.cs .next p{color:#D4DEF5;max-width:36ch;margin:0}
+.cs .next .arr{position:absolute;right:28px;bottom:24px;font-size:2rem}
+@media (max-width:760px){.cs .next{grid-template-columns:1fr}}
+
+/* Press view */
+.cs .press-hero{color:#fff}
+.cs .press-hero .wrap{padding-block:clamp(56px,8vw,104px) clamp(40px,6vw,72px)}
+.cs .press-hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:1.02;max-width:16ch}
+.cs .press-hero .kicker{color:#8FB6F0}
+.cs .press-hero .lede{color:var(--cs-on-navy-muted);margin-top:22px}
+.cs .ptl-phase{margin-top:clamp(48px,7vw,80px)}
+.cs .ptl-phase:first-child{margin-top:0}
+.cs .ptl-phase h2{font-size:clamp(1.5rem,2.6vw,2.1rem);max-width:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.cs .ptl-phase h2 span{font-family:var(--cs-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs-muted)}
+.cs .ptl-list{list-style:none;margin:22px 0 0;padding:0;position:relative}
+.cs .ptl-list::before{content:"";position:absolute;top:14px;bottom:14px;left:150px;width:2px;background:linear-gradient(180deg,var(--bp-blue),var(--cs-rule))}
+.cs .ptl-item{display:grid;grid-template-columns:150px minmax(0,1fr);padding:20px 0}
+.cs .ptl-date{font-family:var(--cs-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cs-muted);padding-top:4px}
+.cs .ptl-entry{padding-left:34px;position:relative}
+.cs .ptl-entry::before{content:"";position:absolute;left:-6px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--cs-paper);border:2px solid var(--bp-blue)}
+.cs .ptl-outlet{margin:0 0 7px;color:var(--bp-navy);font-size:.98rem;line-height:1.2}
+.cs .ptl-outlet.o-serif{font-family:var(--cs-serif);font-weight:600;letter-spacing:-.01em}
+.cs .ptl-outlet.o-caps{font-weight:800;letter-spacing:.1em;text-transform:uppercase;font-size:.82rem}
+.cs .ptl-outlet.o-mono{font-family:var(--cs-mono);font-size:.84rem;letter-spacing:.04em}
+.cs a.ptl-hl{display:inline-block;font-family:var(--cs-serif);font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.3;color:var(--cs-ink);text-decoration:none;border-bottom:1px solid var(--cs-rule);transition:color .2s,border-color .2s}
+.cs a.ptl-hl:hover{color:var(--bp-blue);border-color:var(--bp-blue)}
+.cs a.ptl-hl:focus-visible{outline:3px solid var(--bp-blue);outline-offset:3px}
+.cs .ptl-meta{margin:9px 0 0;font-size:.86rem;color:var(--cs-muted)}
+.cs .ptl-meta .fmt{display:inline-block;font-family:var(--cs-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bp-blue);border:1px solid rgba(0,111,207,.35);border-radius:999px;padding:2px 9px;margin-right:10px;vertical-align:1px}
+@media (max-width:720px){
+  .cs .ptl-list::before{left:6px}
+  .cs .ptl-item{grid-template-columns:1fr;padding-left:34px}
+  .cs .ptl-date{padding:0 0 8px}
+  .cs .ptl-entry{padding-left:0}
+  .cs .ptl-entry::before{left:-34px;top:2px}
+}
+
+/* Footer */
+.site-footer{background:var(--cs-ink);color:#9AA2BA;font-family:var(--bp-font);font-size:.86rem;line-height:1.6}
+.site-footer .wrap{max-width:1180px;margin:0 auto;padding:40px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between}
+.site-footer b{color:#fff;font-weight:600}
+.site-footer p{margin:0;max-width:72ch}
+
+/* Print: every view, no chrome */
+@media print{
+  .site-header{position:static}
+  .site-header .tabs,.cs .era-switch,.cs .legend{display:none}
+  .view[hidden]{display:block!important}
+  /* #screens carries its own id-level hidden rule, which outranks the line above */
+  html #screens[hidden]{display:block!important}
+  .js .cs .reveal{opacity:1!important;transform:none!important}
+  .js .cs .bar .after{transform:none!important}
+  .cs .chapter{padding-block:40px}
+  .cs .phone{transform:none}
+  .cs .float,.cs .next,.cs .go{display:none}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="amex-logo" viewBox="0 0 64 64">
+    <rect width="64" height="64" rx="3" fill="#006FCF"/>
+    <text x="32" y="29" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="16" letter-spacing="-.5" fill="#fff">AMEX</text>
+    <text x="32" y="44" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="6.2" letter-spacing=".4" fill="#fff">AMERICAN</text>
+    <text x="32" y="52" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="6.2" letter-spacing=".4" fill="#fff">EXPRESS</text>
+  </symbol>
+  <symbol id="amex-wordmark" viewBox="0 0 260 24">
+    <text x="0" y="19" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="20" letter-spacing="1.5" fill="currentColor">AMERICAN EXPRESS</text>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="#screens" aria-label="The Relationship Platform, home">
+      <svg aria-hidden="true"><use href="#amex-logo"/></svg>
+      <span><b>The Relationship Platform</b><small>Screens and press</small></span>
+    </a>
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-screens" aria-controls="screens" aria-selected="true" data-view="screens">Screens</button>
+      <button class="tab" role="tab" id="tab-press" aria-controls="press" aria-selected="false" tabindex="-1" data-view="press">Press</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- SCREENS VIEW: owned by the screens build. Do not edit between the markers. -->
+<!-- SCREENS:BEGIN -->
+<section id="screens" class="view" hidden aria-labelledby="tab-screens">
+  <div class="scr-wrap">
+    <header class="scr-intro">
+      <p class="scr-kicker">Screens</p>
+      <h2>One application, any product</h2>
+      <p class="scr-lede" id="scr-lede">Rebuilt screen by screen from a recording of the live flow, using a
+        synthetic customer. This customer starts from a pre-approved offer on the dashboard,
+        wanting a line of credit. Click through it as they would, or step through with the
+        controls under the frame.</p>
+      <div class="scr-flows" role="group" aria-label="Flows">
+        <button type="button" class="scr-flow on" data-flow="application" aria-pressed="true">Application</button>
+        <button type="button" class="scr-flow" data-flow="dashboard" aria-pressed="false">Dashboard</button>
+        <button type="button" class="scr-flow" data-flow="insights" aria-pressed="false">Insights</button>
+        <button type="button" class="scr-flow" data-flow="draw" aria-pressed="false">Draw funds</button>
+        <button type="button" class="scr-flow" disabled>Mobile <em>in build</em></button>
+      </div>
+    </header>
+
+    <div class="scr-stage">
+      <div class="scr-browser">
+        <div class="scr-bar" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <span class="scr-url"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>americanexpress.com/en-us/business/blueprint</span>
+        </div>
+        <div class="scr-scaler">
+          <div class="scr-viewport" aria-live="off"></div>
+        </div>
+      </div>
+      <aside class="scr-rail" aria-live="polite" aria-label="What this screen shows"></aside>
+    </div>
+
+    <div class="scr-controls">
+      <button type="button" class="scr-cbtn" data-nav="prev">Back</button>
+      <label class="scr-jump"><span class="scr-vh">Jump to screen</span><select data-nav="jump"></select></label>
+      <button type="button" class="scr-cbtn primary" data-nav="next">Next screen</button>
+      <button type="button" class="scr-cbtn ghost" data-nav="restart">Restart</button>
+    </div>
+    <p class="scr-fine">Reconstruction with synthetic data. Not affiliated with or endorsed by American Express.</p>
+
+    <ol class="scr-print"></ol>
+  </div>
+</section>
+
+<style>
+#screens[hidden]{display:none!important}
+#screens{--s-blue:var(--bp-blue,#006FCF);--s-navy:var(--bp-navy,#051757);--s-ink:var(--bp-ink,#141A33);
+  --s-line:var(--bp-grey-line,#E2E6EE);--s-font:var(--bp-font,"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);
+  display:block;font-family:var(--s-font);color:var(--s-ink);background:#f3f5f8;padding:48px 24px 64px;
+  -webkit-font-smoothing:antialiased}
+#screens *,#screens *::before,#screens *::after{box-sizing:border-box}
+#screens button{font-family:inherit}
+#screens .scr-wrap{max-width:1380px;margin:0 auto}
+#screens .scr-intro{max-width:760px;margin:0 0 28px}
+#screens .scr-kicker{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--s-blue)}
+#screens .scr-intro h2{margin:0 0 10px;font-size:32px;line-height:1.15;font-weight:700;color:var(--s-ink)}
+#screens .scr-lede{margin:0 0 18px;font-size:16px;line-height:1.55;color:#4a5563}
+#screens .scr-flows{display:flex;gap:8px;flex-wrap:wrap}
+#screens .scr-flow{border:1px solid var(--s-line);background:#fff;color:#4a5563;border-radius:999px;padding:7px 16px;font-size:14px}
+#screens .scr-flow.on{background:var(--s-navy);border-color:var(--s-navy);color:#fff}
+#screens .scr-flow:disabled{opacity:.7;cursor:default}
+#screens .scr-flow em{font-style:normal;font-size:11px;color:#8a94a3;margin-left:4px}
+
+#screens .scr-stage{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start}
+@media (max-width:1040px){#screens .scr-stage{grid-template-columns:1fr}}
+#screens .scr-browser{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #dde2e9;
+  box-shadow:0 24px 60px rgba(0,23,90,.16),0 2px 6px rgba(0,0,0,.06)}
+#screens .scr-bar{height:40px;background:#eceff4;border-bottom:1px solid #dde2e9;display:flex;align-items:center;gap:7px;padding:0 14px}
+#screens .scr-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57;flex:none}
+#screens .scr-bar i:nth-child(2){background:#febc2e}#screens .scr-bar i:nth-child(3){background:#28c840}
+#screens .scr-url{margin:0 auto;display:flex;align-items:center;gap:6px;height:24px;padding:0 16px;border-radius:12px;background:#fff;font-size:12px;color:#5b6573;max-width:70%;overflow:hidden;white-space:nowrap}
+#screens .scr-scaler{position:relative;overflow:hidden;height:760px}
+#screens .scr-viewport{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;position:absolute;top:0;left:0;width:1200px;height:760px;transform-origin:0 0;overflow-y:auto;overflow-x:hidden;background:#fff;color:#333;font-size:15px;line-height:1.4}
+
+#screens .scr-rail{background:#fff;border:1px solid #dde2e9;border-radius:12px;padding:22px 22px 20px;position:sticky;top:24px}
+#screens .scr-rk{margin:0 0 8px;font-size:12px;color:#6b7684;letter-spacing:.02em}
+#screens .scr-rail h3{margin:0 0 10px;font-size:20px;line-height:1.25;color:var(--s-ink)}
+#screens .scr-rail p{margin:0 0 12px;font-size:15px;line-height:1.55;color:#374151}
+#screens .scr-chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 12px;padding:0;list-style:none}
+#screens .scr-chips li{background:#eaf3fc;color:#0a3d78;border-radius:8px;padding:7px 10px;font-size:13px;font-weight:600;line-height:1.3}
+#screens .scr-rec{font-size:13px!important;color:#6b7684!important;border-top:1px solid #edf0f4;padding-top:10px;margin:8px 0 0!important}
+#screens .scr-rail.flash{box-shadow:0 0 0 3px #bcd9f5}
+
+#screens .scr-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0 8px}
+#screens .scr-cbtn{height:40px;padding:0 18px;border-radius:8px;border:1px solid #c9d1dc;background:#fff;color:var(--s-ink);font-size:14px;cursor:pointer}
+#screens .scr-cbtn.primary{background:var(--s-blue);border-color:var(--s-blue);color:#fff}
+#screens .scr-cbtn.ghost{border-color:transparent;background:transparent;color:#4a5563}
+#screens .scr-cbtn:disabled{opacity:.45;cursor:default}
+#screens .scr-cbtn:focus-visible,#screens .scr-jump select:focus-visible,#screens .scr-flow:focus-visible{outline:3px solid #9cc7f0;outline-offset:2px}
+#screens .scr-jump select{height:40px;border-radius:8px;border:1px solid #c9d1dc;background:#fff;padding:0 10px;font-size:14px;color:var(--s-ink);max-width:260px}
+#screens .scr-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#screens .scr-fine{font-size:12px;color:#8a94a3;margin:6px 0 0}
+#screens .scr-print{display:none}
+
+/* ---------- rebuilt Amex UI ---------- */
+#screens .ax-logo{--sz:30px;width:var(--sz);height:var(--sz);background:var(--s-blue);color:#fff;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:calc(var(--sz)*.3);line-height:.92;letter-spacing:-.02em;border-radius:2px;flex:none}
+#screens .ax-wordmark{font-weight:800;color:var(--s-blue);font-size:17px;letter-spacing:.02em;transform:scaleY(.92);display:inline-block}
+#screens .ax-a{color:var(--s-blue)}
+#screens .ax-blue{color:var(--s-blue)}
+#screens .ax-global{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 72px;border-bottom:1px solid #e7e7e7;background:#fff;position:relative}
+#screens .ax-global .ax-wordmark{position:absolute;left:50%;transform:translateX(-50%) scaleY(.92)}
+#screens .ax-menu{display:inline-flex;align-items:center;gap:8px;background:var(--s-blue);color:#fff;border-radius:4px;height:34px;padding:0 14px;font-size:14px}
+#screens .ax-gright{display:flex;align-items:center;gap:18px;font-size:13px;color:var(--s-blue)}
+#screens .ax-acct{height:54px;display:flex;align-items:center;gap:10px;padding:0 72px;border-bottom:1px solid #e7e7e7;background:#fff;font-size:14px}
+#screens .ax-bptile{width:38px;height:26px;background:var(--s-navy);color:#fff;font-size:5.5px;font-weight:800;line-height:1.05;display:flex;align-items:center;padding-left:4px;border-radius:2px}
+#screens .ax-vr{width:1px;height:54px;background:#e7e7e7;margin:0 8px}
+#screens .ax-tab{color:var(--s-blue);font-size:13px;padding:17px 6px 15px;margin-right:6px;border-bottom:3px solid transparent}
+#screens .ax-tab.on{color:#222;border-bottom-color:var(--s-navy)}
+#screens .ax-bell{color:var(--s-blue);display:inline-flex}
+#screens .ax-gridbg{background-color:var(--s-navy);background-image:
+  linear-gradient(90deg,var(--s-navy) 45%,rgba(5,23,87,.2)),
+  linear-gradient(rgba(110,160,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(110,160,255,.28) 1px,transparent 1px),
+  linear-gradient(rgba(110,160,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(110,160,255,.12) 1px,transparent 1px);
+  background-size:100% 100%,48px 48px,48px 48px,12px 12px,12px 12px}
+#screens .ax-hero{padding:16px 72px 58px;color:#fff}
+#screens .ax-greet{font-size:19px;font-weight:700;margin:0 0 10px}
+#screens .ax-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--s-navy);border-radius:18px;padding:6px 12px;font-size:12.5px}
+#screens .ax-dash{display:grid;grid-template-columns:1fr 420px;gap:22px;padding:0 72px 40px;margin-top:-40px;background:linear-gradient(#fff0 40px,#f4f6f9 40px)}
+#screens .ax-col{display:flex;flex-direction:column;gap:18px}
+#screens .ax-card{background:#fff;border:1px solid #e2e6ec;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+#screens .ax-card h3{margin:0;font-size:18px;font-weight:600;color:#222}
+#screens .ax-cardh{display:flex;justify-content:space-between;align-items:center;margin:0 0 12px}
+#screens .ax-cardh small{font-size:13px;color:#555}
+#screens .ax-group{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee;font-size:15px}
+#screens .ax-group span{display:inline-flex;align-items:center;gap:8px}
+#screens .ax-crow{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #f0f0f0}
+#screens .ax-crow b,#screens .ax-exp b{display:block;font-weight:500;font-size:14.5px;color:#222}
+#screens .ax-crow small,#screens .ax-exp small{display:block;font-size:12.5px;color:#666;margin-top:2px}
+#screens .ax-bal{text-align:right}
+#screens .ax-art{width:48px;height:31px;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+#screens .ax-art.green{background:linear-gradient(135deg,#1f8f5c,#0b5c37 60%,#2aa06a)}
+#screens .ax-art.plat{background:linear-gradient(135deg,#e9ebee,#aeb3b8 60%,#d6d9dc)}
+#screens .ax-art.gold{background:linear-gradient(135deg,#e7cc86,#b8913f 60%,#d9bb6f)}
+#screens .ax-exp{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:start;padding:8px 0;font-size:14px}
+#screens .ax-exp em{font-style:normal;font-size:13.5px;color:#333}
+#screens .ax-pre{border-top:4px solid var(--s-blue)}
+#screens .ax-pre p{margin:0 0 14px;font-size:14.5px;color:#333}
+#screens .ax-sm{font-size:14px!important}
+#screens .ax-mr{font-size:24px;font-weight:600;margin:8px 0 6px}
+
+#screens .ax-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--s-blue);color:#fff;border:0;border-radius:6px;height:48px;padding:0 32px;font-size:16px;cursor:pointer}
+#screens .ax-btn:disabled{background:#b9cde6;cursor:default}
+#screens .ax-btn.full{width:100%}
+#screens .ax-btn-o,#screens .ax-btn-o2{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--s-blue);border:1px solid var(--s-blue);border-radius:6px;height:40px;padding:0 20px;font-size:14px;cursor:pointer}
+#screens .ax-btn-o2{height:48px;padding:0 26px;font-size:16px;border-color:#b9cde6}
+#screens .ax-btn-w{background:#fff;color:#0a4fa6;border:0;border-radius:4px;height:46px;padding:0 24px;font-size:16px;cursor:pointer}
+#screens .ax-link{background:none;border:0;color:var(--s-blue);font-size:14px;cursor:pointer;padding:6px}
+#screens .ax-viewport-focus :focus-visible,#screens .scr-viewport :focus-visible{outline:3px solid #9cc7f0;outline-offset:2px}
+
+#screens .ax-land{position:relative;height:440px;background:var(--s-blue);overflow:hidden;color:#fff}
+#screens .ax-land::before{content:"";position:absolute;inset:0;background:#fff;clip-path:polygon(0 0,21% 0,17% 100%,0 100%)}
+#screens .ax-land::after{content:"";position:absolute;right:-120px;bottom:-160px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07),transparent 65%)}
+#screens .ax-phone{position:absolute;left:120px;top:92px;width:220px;height:400px;border-radius:30px;background:#1c1c1e;padding:9px;transform:rotate(-9deg);box-shadow:0 20px 40px rgba(0,0,0,.35);z-index:1}
+#screens .ax-phone>div.ax-ph{background:#fff;border-radius:22px;height:100%;padding:18px 12px;color:#222;font-size:9px}
+#screens .ax-ph-t{font-weight:700;text-align:center;margin:0 0 8px}
+#screens .ax-ph-card{border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.15);padding:10px;text-align:center}
+#screens .ax-ph-card b{display:block;font-size:17px;margin:2px 0}
+#screens .ax-ph-card i{display:block;height:4px;background:var(--s-blue);border-radius:2px;margin:6px 0}
+#screens .ax-ph-pills{display:flex;gap:4px;margin:10px 0}
+#screens .ax-ph-pills span{background:var(--s-blue);color:#fff;border-radius:10px;padding:4px 7px}
+#screens .ax-ph-sec div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eee}
+#screens .ax-lockup{position:absolute;right:130px;top:66px;font-weight:800;font-size:36px;line-height:.93;text-align:right;padding-right:20px;border-right:3px solid #fff;letter-spacing:-.01em;z-index:1}
+#screens .ax-lockup::after{content:"";position:absolute;right:-3px;top:-14px;width:50px;border-top:3px solid #fff}
+#screens .ax-land-copy{position:absolute;left:520px;top:170px;width:560px;z-index:1}
+#screens .ax-land-copy h1{margin:0 0 14px;font-size:44px;line-height:1.12;font-weight:300}
+#screens .ax-land-copy p{margin:0 0 26px;font-size:17px;line-height:1.5}
+
+#screens .ax-overlay{position:absolute;inset:0;background:rgba(10,20,40,.45);display:flex;align-items:center;justify-content:center;z-index:5}
+#screens .ax-modal{position:relative;background:#fff;border-radius:14px;width:680px;padding:34px 40px 32px;box-shadow:0 20px 60px rgba(0,0,0,.3);color:#333}
+#screens .ax-modal h2{margin:0 60px 22px 0;font-size:25px;line-height:1.25;font-weight:700;color:#333}
+#screens .ax-modal ul{margin:0 0 22px;padding-left:22px;font-size:16px;line-height:2}
+#screens .ax-x{position:absolute;right:24px;top:24px;width:52px;height:52px;border:1.5px solid var(--s-blue);border-radius:10px;background:#fff;color:var(--s-blue);display:flex;align-items:center;justify-content:center;cursor:pointer}
+#screens .ax-chk{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;line-height:1.5;margin:0 0 24px;cursor:pointer}
+#screens .ax-chk input,#screens .ax-r input,#screens .ax-rcard input{appearance:none;-webkit-appearance:none;margin:2px 0 0;flex:none;width:24px;height:24px;border:1.5px solid #8c8c8c;background:#fafafa;cursor:pointer}
+#screens .ax-chk input{border-radius:4px}
+#screens .ax-chk input:checked{background:var(--s-blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='2.6'/%3E%3C/svg%3E") center/18px no-repeat;border-color:var(--s-blue)}
+#screens .ax-r input,#screens .ax-rcard input{border-radius:50%}
+#screens .ax-r input:checked,#screens .ax-rcard input:checked{border-color:var(--s-blue);background:var(--s-blue);box-shadow:inset 0 0 0 4px #fff}
+#screens .ax-mbtns{display:flex;gap:16px}
+#screens .ax-mbtns.col{flex-direction:column;align-items:center;gap:12px}
+
+#screens .ax-apphead{height:76px;display:grid;grid-template-columns:1fr 520px 1fr;align-items:center;padding:0 72px;border-bottom:1px solid #eee}
+#screens .ax-prog{padding-top:10px}
+#screens .ax-bar{height:8px;border-radius:4px;background:#dcdcdc;overflow:hidden}
+#screens .ax-bar i{display:block;height:100%;background:var(--s-blue);border-radius:4px;transition:width .35s ease}
+#screens .ax-count{text-align:right;font-size:14px;color:#333;margin-top:6px}
+#screens .ax-hlinks{justify-self:end;display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--s-blue)}
+#screens .ax-sep{width:1px;height:26px;background:#ddd}
+#screens .ax-form{width:520px;margin:40px auto 56px}
+#screens .ax-q{margin:0 0 10px;font-size:23px;line-height:1.3;font-weight:700;color:#333}
+#screens .ax-help{margin:0 0 20px;font-size:15.5px;line-height:1.55;color:#444}
+#screens .ax-help.small{font-size:13.5px;margin:0 0 8px}
+#screens .ax-label{display:block;margin:18px 0 8px;font-size:15px;color:#333}
+#screens .ax-inwrap{position:relative}
+#screens .ax-input,#screens .ax-select{width:100%;height:50px;border:1px solid #8c8c8c;border-radius:6px;background:#fafafa;padding:0 16px;font:inherit;font-size:15.5px;color:#222}
+#screens .ax-select{appearance:none;-webkit-appearance:none;background:#fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E") right 14px center/20px no-repeat}
+#screens .ax-input:focus,#screens .ax-select:focus{outline:none;border-color:var(--s-blue);box-shadow:0 0 0 1px var(--s-blue)}
+#screens .ax-input.narrow{width:220px}
+#screens .ax-search .ax-input{padding-right:64px}
+#screens .ax-search span{position:absolute;right:14px;top:13px;display:flex;align-items:center;gap:12px;color:var(--s-blue)}
+#screens .ax-search span::before{content:"";width:1px;height:26px;background:#999}
+#screens .ax-eye{position:absolute;right:8px;top:7px;width:36px;height:36px;border:0;background:none;color:var(--s-blue);cursor:pointer}
+#screens .ax-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#screens .ax-radios{margin:6px 0 22px}
+#screens .ax-r{display:flex;align-items:center;gap:16px;padding:10px 0 10px 14px;font-size:16px;cursor:pointer}
+#screens .ax-r input{margin:0}
+#screens .ax-form>.ax-btn{margin-top:12px}
+#screens .ax-why{border:1px solid #ddd;border-radius:12px;padding:0 22px;margin:30px 0 0}
+#screens .ax-why summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:16px;display:flex;gap:16px;align-items:center}
+#screens .ax-why summary::-webkit-details-marker{display:none}
+#screens .ax-why summary::before{content:"";width:10px;height:10px;border-right:2px solid var(--s-blue);border-bottom:2px solid var(--s-blue);transform:rotate(45deg) translateY(-3px)}
+#screens .ax-why[open] summary::before{transform:rotate(-135deg)}
+#screens .ax-why p{margin:0 0 18px;font-size:14.5px;line-height:1.5;color:#444}
+#screens .ax-note{background:#f3f7fc;border-left:3px solid var(--s-blue);padding:10px 14px;font-size:14px;color:#334;margin:0 0 18px}
+#screens .ax-ta{position:relative}
+#screens .ax-talist{position:absolute;left:0;right:0;top:54px;margin:0;padding:6px 0;list-style:none;background:#fff;border:1px solid #bbb;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,.12);max-height:250px;overflow:auto;z-index:3}
+#screens .ax-talist button{display:block;width:100%;text-align:left;border:0;background:none;padding:9px 16px;font-size:14.5px;color:#222;cursor:pointer}
+#screens .ax-talist button:hover,#screens .ax-talist button:focus{background:#eef5fc;outline:none}
+
+#screens .ax-center{width:540px;margin:44px auto 40px;text-align:center}
+#screens .ax-pico{display:inline-flex;margin:0 0 10px}
+#screens .ax-ctitle{margin:0 0 10px;font-size:22px;font-weight:700;color:#222}
+#screens .ax-cbody{margin:0 0 26px;font-size:16px;line-height:1.55;color:#333}
+#screens .ax-rcard{display:flex;gap:22px;align-items:center;text-align:left;border:1px solid #bbb;border-radius:8px;padding:20px 26px;margin:0 0 14px;cursor:pointer}
+#screens .ax-rcard b{display:block;font-weight:400;font-size:16px;color:#222;line-height:1.4}
+#screens .ax-rcard small{display:block;font-size:14px;color:#444;margin-top:4px;letter-spacing:.01em}
+#screens .ax-center .ax-btn{margin-top:18px}
+#screens .ax-mt{margin-top:10px}
+
+#screens .ax-box{border:1px solid #d9d9d9;border-radius:12px;padding:4px 18px;margin:0 0 20px}
+#screens .ax-box h3{margin:16px 0 8px;font-size:18px;font-weight:700;color:#333}
+#screens .ax-row{display:grid;grid-template-columns:150px 1fr auto;gap:12px;padding:12px 0;border-top:1px solid #e6e6e6;font-size:14.5px}
+#screens .ax-row:first-of-type{border-top:0}
+#screens .ax-row dt{color:#333}#screens .ax-row dd{margin:0;color:#333;white-space:pre-line}
+#screens .ax-edit{border:0;background:none;color:var(--s-blue);font-size:14.5px;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:2px;align-self:start}
+#screens .ax-edit.static{cursor:default}
+#screens .ax-ok{display:inline-flex;vertical-align:-2px;margin-left:4px}
+#screens .ax-tc summary{list-style:none;display:flex;gap:12px;align-items:center;padding:18px 0;font-weight:700;font-size:15.5px;color:var(--s-blue);cursor:pointer}
+#screens .ax-tc summary::-webkit-details-marker{display:none}
+#screens .ax-tc p,#screens .ax-disc-body p{margin:0 0 10px;font-size:13.5px;line-height:1.5;color:#444}
+#screens .ax-disc-h{display:flex;gap:12px;align-items:center;padding:18px 0 10px;font-weight:700;font-size:15.5px;color:#333}
+#screens .ax-disc-body{padding:0 0 12px 34px}
+#screens .ax-disc-body ol{margin:0;padding-left:20px;font-size:13.5px;line-height:1.5;color:#444}
+
+#screens .ax-proc{width:780px;margin:70px auto 60px;text-align:center}
+#screens .ax-proc h2{margin:0 0 12px;font-size:25px;font-weight:700;color:#333}
+#screens .ax-proc>p{margin:0 0 36px;font-size:17px;color:#444}
+#screens .ax-proc .ax-bar{height:6px}
+#screens .ax-pct{text-align:right;font-size:17px;color:#444;margin:10px 0 34px}
+#screens .ax-dyk{display:flex;gap:18px;text-align:left;border:1.5px solid var(--s-blue);border-radius:16px;padding:22px 26px;color:var(--s-blue)}
+#screens .ax-dyk b{display:block;color:#333;font-size:17px;margin:0 0 6px}
+#screens .ax-dyk p{margin:0;color:#444;font-size:16px;line-height:1.55}
+
+#screens .ax-band{height:34px}
+#screens .ax-acwrap{padding:0 150px 30px;margin-top:-18px;background:linear-gradient(#fff0 18px,#f4f6f9 18px)}
+#screens .ax-prodcard{background:#fff;border:1px solid #e2e6ec;border-radius:4px;display:flex;align-items:center;gap:40px;padding:0 18px;height:58px;margin:0 0 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+#screens .ax-prodid{display:flex;gap:10px;align-items:center}
+#screens .ax-prodid b{display:block;font-size:13px;font-weight:600;color:#222}#screens .ax-prodid small{font-size:12px;color:#555}
+#screens .ax-ptabs{display:flex;gap:22px;font-size:13px;color:var(--s-blue);align-self:stretch}
+#screens .ax-ptabs span{display:flex;align-items:center;border-bottom:3px solid transparent}
+#screens .ax-ptabs span.on{color:#222;border-bottom-color:var(--s-navy)}
+#screens .ax-acgrid{display:grid;grid-template-columns:1fr 330px;gap:18px}
+#screens .ax-acgrid .ax-card{margin:0 0 16px}
+#screens .ax-big{font-size:28px;font-weight:600;margin:10px 0 2px}
+#screens .ax-kv{display:flex;justify-content:space-between;padding:8px 0;font-size:14px;border-bottom:1px solid #f0f0f0}
+#screens .ax-ql{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:14px;color:var(--s-blue)}
+#screens .ax-linkc{display:flex;gap:14px;align-items:center;color:var(--s-blue)}
+#screens .ax-linkc b{color:#222;font-size:15px;font-weight:600}
+#screens .ax-confetti i{position:absolute;width:8px;height:14px;border-radius:2px;opacity:.85}
+#screens .ax-appr{width:520px;text-align:center;padding:40px 34px 34px}
+#screens .ax-appr h2{margin:14px 0 22px;font-size:20px;font-weight:700}
+#screens .ax-appr .ax-x{width:auto;height:auto;border:0;right:16px;top:14px;color:#555}
+#screens .ax-appr .ax-btn,#screens .ax-appr .ax-btn-o2{height:42px;font-size:15px;min-width:240px}
+
+#screens .ax-foot{padding:26px 72px 36px;border-top:1px solid #eee;background:#fff}
+#screens .ax-disc{color:var(--s-blue);font-size:14px;margin:0 0 22px}
+#screens .ax-footin{border-top:1px solid #e7e7e7;padding-top:22px}
+#screens .ax-flinks{display:flex;flex-wrap:wrap;margin:16px 0 18px;font-size:12.5px;color:var(--s-blue)}
+#screens .ax-flinks span{padding:0 10px;border-left:1px solid #999;line-height:1}
+#screens .ax-flinks span:first-child{padding-left:0;border-left:0}
+#screens .ax-footin p{margin:0 0 10px;font-size:11.5px;color:#444}
+
+
+#screens .ax-pills{display:flex;gap:12px;flex-wrap:wrap}
+#screens .ax-art.bank{background:linear-gradient(135deg,#eaf1fa,#c9dcf2);box-shadow:inset 0 0 0 1px #bcd2ea}
+#screens .ax-art.loc{background:linear-gradient(135deg,#1f5fae,#0b3f83)}
+#screens .ax-cf .ax-cardh{margin-bottom:6px}
+#screens .ax-cfmore{display:inline-flex;align-items:center;gap:4px;font-size:13.5px}
+#screens .ax-cfrow{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:10px 0 4px}
+#screens .ax-cfrow small{display:block;font-size:13px;color:#555}
+#screens .ax-cfrow b{display:block;font-size:24px;font-weight:600;margin:4px 0 8px;color:#222}
+#screens .ax-cfrow i{display:block;height:6px;border-radius:3px}
+#screens .ax-cfrow i.in{background:#1d9a6c}#screens .ax-cfrow i.out{background:#e2664f}
+#screens .ax-cffoot{margin:12px 0 0;font-size:12.5px;color:#666}
+#screens .ax-crow{align-items:start}
+#screens .ax-avail{display:block;font-size:13px;color:#222;font-weight:600;margin-top:6px}
+#screens .ax-sub{display:flex;gap:12px;align-items:flex-start;margin:12px 0 2px;padding:12px 14px;border-radius:8px;background:#eef4fb;color:var(--s-blue)}
+#screens .ax-sub.offer{background:#f4f1fb}
+#screens .ax-sub p{margin:0;flex:1;font-size:13.5px;line-height:1.45;color:#333}
+#screens .ax-sub .ax-a{font-size:13.5px;white-space:nowrap}
+#screens .ax-tool{display:grid;grid-template-columns:34px 1fr 16px;gap:14px;align-items:start;padding:16px 0;border-top:1px solid #f0f0f0;color:var(--s-blue)}
+#screens .ax-tool:first-of-type{border-top:0}
+#screens .ax-tool b{display:block;font-size:15px;color:#222;margin-bottom:4px}
+#screens .ax-tool p{margin:0;font-size:13.5px;line-height:1.5;color:#555}
+
+
+#screens .ax-insband{height:26px;background:var(--s-navy)}
+#screens .ax-instabs{background:#fff;border:1px solid #e2e6ec;border-radius:6px;margin:-20px 150px 0;padding:0 18px;display:flex;gap:26px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+#screens .ax-instab{padding:16px 6px;font-size:14px;color:var(--s-blue);border-bottom:3px solid transparent}
+#screens .ax-instab.on{color:#222;border-bottom-color:var(--s-navy);font-weight:500}
+#screens .ax-inswrap{padding:26px 150px 40px;background:#f4f6f9;min-height:520px}
+#screens .ax-institle{display:flex;align-items:center;justify-content:space-between;margin:0 0 18px}
+#screens .ax-institle h2{margin:0;font-size:26px;font-weight:700;color:#222}
+#screens .ax-institle .ax-sm2{font-size:13px;color:#555;margin-top:4px}
+#screens .ax-insacts{display:flex;gap:14px;align-items:center}
+#screens .ax-btn-pale{display:inline-flex;align-items:center;gap:8px;background:#eaf3fc;border:1px solid #cfe2f7;color:var(--s-blue);border-radius:6px;height:42px;padding:0 18px;font-size:14px}
+#screens .ax-ins2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+#screens .ax-inscard{background:#fff;border:1px solid #e2e6ec;border-radius:10px;padding:20px 22px;margin:0 0 20px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+#screens .ax-insh{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+#screens .ax-insh h3{margin:0;font-size:17px;font-weight:700;color:#222;flex:1}
+#screens .ax-insico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#eaf3fc;color:var(--s-blue)}
+#screens .ax-insico.warn{background:#fdeeec;color:#c0392b}
+#screens .ax-insbig{font-size:26px;font-weight:600;color:#222;margin:2px 0 6px}
+#screens .ax-inscard p{margin:0 0 6px;font-size:14px;color:#555;line-height:1.5}
+#screens .ax-insstrip{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#eef5fc;border-radius:8px;padding:12px 14px;margin-top:14px;font-size:13.5px;color:#333}
+#screens .ax-chip2{display:inline-flex;gap:6px;background:#fff;border:1px solid #d7dde6;border-radius:8px;padding:10px 14px;font-size:13px;color:#333;flex-direction:column;min-width:150px}
+#screens .ax-chip2 b{font-size:19px;font-weight:600;color:#222}
+#screens .ax-toggle{display:inline-flex;border:1px solid #c9d3de;border-radius:8px;overflow:hidden;background:#fff}
+#screens .ax-toggle span{padding:11px 20px;font-size:14px;color:#333}
+#screens .ax-toggle span.on{background:var(--s-blue);color:#fff}
+#screens .ax-selects{display:flex;gap:18px}
+#screens .ax-selects label{font-size:13px;color:#444;display:block;margin-bottom:6px}
+#screens .ax-fakesel{width:190px;height:44px;border:1px solid #8c8c8c;border-radius:6px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E") right 12px center/20px no-repeat;display:flex;align-items:center;padding:0 14px;font-size:14px;color:#222}
+#screens .ax-chart{display:flex;align-items:flex-end;gap:10px;height:190px;padding:14px 0 0;border-bottom:1px solid #e3e3e3}
+#screens .ax-chart div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;height:100%}
+#screens .ax-chart i{display:block;width:70%;background:#1d9a6c;border-radius:2px}
+#screens .ax-chart i.neg{background:#2b6cb0}
+#screens .ax-chart small{font-size:11px;color:#777}
+#screens .ax-catrow{border-top:1px solid #eee;padding:16px 0}
+#screens .ax-catrow:first-of-type{border-top:0}
+#screens .ax-cathead{display:flex;align-items:center;gap:12px}
+#screens .ax-cathead .ax-a{flex:1;font-size:15px}
+#screens .ax-cathead b{font-size:15px;color:#222}
+#screens .ax-cathead small{display:block;font-size:12px;color:#666;text-align:right}
+#screens .ax-catbar{height:6px;border-radius:3px;background:#e6ebf2;margin:12px 0 10px;overflow:hidden}
+#screens .ax-catbar i{display:block;height:100%;background:var(--s-blue)}
+#screens .ax-tt{width:100%;border-collapse:collapse;font-size:13px}
+#screens .ax-tt th{text-align:left;font-weight:600;color:#333;padding:12px 10px;border-bottom:2px solid #333;white-space:nowrap}
+#screens .ax-tt td{padding:14px 10px;border-bottom:1px solid #eee;color:#333;vertical-align:top}
+#screens .ax-tt .desc b{display:block;color:var(--s-blue);font-weight:400}
+#screens .ax-tt .desc small{display:block;color:#666;font-size:12px;line-height:1.4;margin-top:2px}
+#screens .ax-tt .amt{text-align:right;white-space:nowrap}
+#screens .ax-catsel{display:inline-flex;align-items:center;gap:6px;color:var(--s-blue)}
+#screens .ax-whatsnew{display:flex;gap:14px;align-items:flex-start;background:#eef5fc;border:1px solid #cfe2f7;border-radius:10px;padding:16px 18px;margin:0 0 20px}
+#screens .ax-whatsnew b{display:block;font-size:15px;color:#222;margin-bottom:4px}
+#screens .ax-whatsnew p{margin:0;font-size:13.5px;color:#444;line-height:1.5}
+#screens .ax-ruleprompt{background:#eef5fc;border-radius:8px;padding:16px 18px;margin:10px 0 0;font-size:13.5px;color:#333;line-height:1.6}
+#screens .ax-toast{position:absolute;right:26px;bottom:26px;background:var(--s-navy);color:#fff;border-radius:8px;padding:14px 18px;font-size:14px;display:flex;gap:12px;align-items:center}
+#screens .ax-rulebox{background:#fff;border:1px solid #e2e6ec;border-radius:10px;padding:20px 22px}
+#screens .ax-rulerow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:13.5px;color:#333;margin-top:14px}
+#screens .ax-rulepill{border:1px solid #c9d3de;border-radius:6px;padding:8px 12px;background:#fff}
+#screens .ax-rulepill.grow{flex:1;color:#555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+
+#screens .ax-slider{margin:14px 0 6px}
+#screens .ax-sliderbar{position:relative;height:6px;border-radius:3px;background:#dcdcdc;margin:10px 0 0}
+#screens .ax-sliderbar i{display:block;height:100%;border-radius:3px;background:var(--s-blue)}
+#screens .ax-knob{position:absolute;top:50%;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--s-blue);transform:translate(-50%,-50%)}
+#screens .ax-knoblabel{position:absolute;top:26px;transform:translateX(-50%);background:var(--s-navy);color:#fff;border-radius:4px;padding:4px 10px;font-size:13px;white-space:nowrap}
+#screens .ax-range{display:flex;justify-content:space-between;font-size:14px;color:#333;margin-top:14px}
+#screens .ax-term{display:flex;align-items:center;gap:18px;border:1px solid #c9d3de;border-radius:8px;padding:18px 22px;margin:0 0 12px}
+#screens .ax-term.off{color:#888;background:#fafafa}
+#screens .ax-term .t{flex:1;font-size:16px}
+#screens .ax-term small{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#666;margin-top:4px}
+#screens .ax-term .f{text-align:right;font-size:13.5px;color:#333;line-height:1.7}
+#screens .ax-legal{font-size:11.5px;line-height:1.55;color:#555;margin:26px 0 0}
+#screens .ax-sched{width:100%;border-collapse:collapse;font-size:14px}
+#screens .ax-sched th{text-align:left;font-weight:600;padding:12px 10px;border-bottom:1px solid #ddd;color:#333}
+#screens .ax-sched td{padding:13px 10px;border-bottom:1px solid #eee;color:#333}
+#screens .ax-sched td:last-child,#screens .ax-sched th:last-child{text-align:right}
+#screens .ax-loanhead{font-size:15px;color:#333;padding:0 0 14px;border-bottom:1px solid #e3e3e3;margin:0 0 22px}
+#screens .ax-goback{display:inline-flex;align-items:center;gap:6px;color:var(--s-blue);font-size:14px;margin:0 0 16px}
+#screens .ax-drop{border:1px solid #c9d3de;border-radius:6px;background:#fff;max-width:520px;box-shadow:0 8px 24px rgba(0,0,0,.14);overflow:hidden}
+#screens .ax-drop div{padding:9px 16px;font-size:14.5px;color:#222}
+#screens .ax-drop div.on{background:var(--s-blue);color:#fff}
+#screens .ax-drop div.head{color:#333}
+#screens .ax-acctpick{display:flex;align-items:center;gap:18px;border:1px solid var(--s-blue);border-radius:8px;padding:18px 22px;margin:0 0 14px}
+#screens .ax-acctpick b{display:block;font-size:16px;font-weight:400;color:#222}
+#screens .ax-acctpick small{font-size:13px;color:#666}
+#screens .ax-terms{font-size:12.5px;color:#555;line-height:1.6;margin:16px 0 0;padding-left:18px}
+#screens .ax-linkbenefit{display:flex;gap:16px;align-items:flex-start;margin:0 0 18px;font-size:15px;color:#333;line-height:1.5}
+
+
+#screens .ax-offergroup{margin:22px 0 10px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#555}
+#screens .ax-offer{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:start}
+#screens .ax-offer .ax-art{width:60px;height:38px}
+#screens .ax-offer b{display:block;font-size:16px;font-weight:600;color:#222;margin-bottom:6px}
+#screens .ax-offer p{margin:0 0 10px;font-size:13.5px;line-height:1.5;color:#555}
+#screens .ax-card.ax-offercard{padding:18px 20px}
+
+@media print{
+  /* The tab shell hides inactive views with [hidden]. Our own id-level rule above wins on
+     specificity, so without this the whole block stays hidden in print even when the strip
+     is populated. Un-hide ourselves rather than relying on the host stylesheet. */
+  #screens[hidden]{display:block!important}
+  #screens{background:#fff;padding:0}
+  #screens .scr-stage,#screens .scr-controls,#screens .scr-flows{display:none!important}
+  #screens .scr-print{display:block;padding-left:20px}
+  #screens .scr-print li{break-inside:avoid;margin:0 0 14px}
+  #screens .scr-print h4{margin:0 0 4px;font-size:14px}
+  #screens .scr-print p{margin:0;font-size:12px;line-height:1.45}
+}
+</style>
+
+<script>
+(function(){
+  "use strict";
+  var VW = 1200, VH = 760;
+  var I = {
+    search:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>',
+    right:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
+    bell:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 004 0"/></svg>',
+    menu:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+    dollar:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M14.6 9.3c-.5-.8-1.4-1.3-2.6-1.3-1.5 0-2.5.8-2.5 1.9 0 2.6 5.2 1.4 5.2 4.1 0 1.1-1.1 2-2.7 2-1.2 0-2.2-.5-2.7-1.3M12 6.4V8m0 8v1.6"/></svg>',
+    bigdollar:'<svg viewBox="0 0 48 48" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="24" cy="24" r="21"/><path d="M29.5 17.5c-1-1.6-2.9-2.6-5.3-2.6-3.1 0-5.2 1.7-5.2 3.9 0 5.4 10.8 2.9 10.8 8.5 0 2.3-2.3 4.1-5.6 4.1-2.5 0-4.6-1-5.6-2.7M24 12v3m0 18v3"/></svg>',
+    person:'<svg viewBox="0 0 48 48" width="46" height="46" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="24" cy="17" r="8"/><path d="M9 40c1.5-7.5 7.5-12 15-12s13.5 4.5 15 12z"/></svg>',
+    bank:'<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-5 9 5z"/><path d="M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/></svg>',
+    brief:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12h18"/></svg>',
+    eye:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+    check:'<svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2"/></svg>',
+    checkO:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10.5"/><path d="M7 12.5l3 3 7-7"/></svg>',
+    phone:'<svg viewBox="0 0 24 24" width="14" height="14" fill="#2e7d32"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg>',
+    info:'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
+    close:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+    plus:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>',
+    chart:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16"/><path d="M8 16l4-5 3 3 4-6"/></svg>',
+    star:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg>',
+    cards:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="6" width="15" height="10" rx="2"/><path d="M2.5 9.5h15M20 9v8a2 2 0 01-2 2H7"/></svg>',
+    people:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5"/><path d="M16 7.2a3 3 0 010 5.6M17.5 19c-.3-1.6-.9-2.9-1.8-3.9"/></svg>'
+  };
+
+  var DEFAULTS = {
+    eligible:false, card:'green',
+    bizName:'HARBORLINE SUPPLY CO. LLC', bizPhone:'(203) 555-0142', ein:'12-3456789',
+    legalName:'DANA WHITFIELD', dob:'04/12/1984',
+    bizStreet:'1200 Harborline Way', bizApt:'', bizCity:'Stamford', bizState:'CT', bizZip:'06901',
+    addrChoice:'verified', started:'03/2021', structure:'', workers:'1-4', industry:'', indq:'',
+    phone:'(203) 555-0198', ssn:'000-00-0000', showSsn:false,
+    homeSame:true, homeStreet:'1200 Harborline Way', homeApt:'', homeCity:'Stamford', homeState:'CT', homeZip:'06901',
+    role:'', owners:'', revenue:'$340,000', income:'$185,000', nontax:''
+  };
+  var S = {};
+  function reset(){ for (var k in DEFAULTS) S[k] = DEFAULTS[k]; }
+  reset();
+
+  var STATES = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'];
+  var INDUSTRIES = ['Government, Public Entity','Non-Profits','Administrative, Employment and Business Support Services','Agriculture, Forestry, Fishing and Hunting','All Other Manufacturing','Apparel, Textile, Fiber and Cloth','Wholesale Trade, Durable Goods'];
+
+  function esc(v){ return String(v == null ? '' : v).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function logo(sz){ return '<span class="ax-logo" style="--sz:'+(sz||30)+'px" role="img" aria-label="American Express"><span>AM</span><span>EX</span></span>'; }
+  function wordmark(){ return '<span class="ax-wordmark">AMERICAN EXPRESS</span>'; }
+  function globalBar(){
+    return '<div class="ax-global"><span class="ax-menu">'+I.menu+'Menu</span>'+wordmark()+
+      '<div class="ax-gright"><span style="display:inline-flex">'+I.search+'</span><span>Customer Service</span><span>Log Out</span></div></div>';
+  }
+  function acctBar(active){
+    var tabs = ['Dashboard','Insights','Account'].map(function(t){ return '<span class="ax-tab'+(t===active?' on':'')+'">'+t+'</span>'; }).join('');
+    return '<div class="ax-acct"><span class="ax-bptile">BUSINESS<br>BLUEPRINT</span><span>Business Blueprint</span><span style="display:inline-flex;margin-left:40px">'+I.chev+'</span><span class="ax-vr"></span>'+tabs+'<span class="ax-bell">'+I.bell+'</span></div>';
+  }
+  function total(){ return S.owners === 'No' ? 15 : 16; }
+  function after11(n){ return S.owners === 'Yes' ? n + 1 : n; }
+  function appHead(step){
+    var prog = step ? '<div class="ax-bar"><i style="width:'+Math.round(step/total()*100)+'%"></i></div><div class="ax-count">'+step+' of '+total()+'</div>' : '';
+    return '<div class="ax-apphead"><div>'+logo(32)+'</div><div class="ax-prog">'+prog+'</div><div class="ax-hlinks"><span>Help</span><span class="ax-sep"></span><span>Finish Later</span></div></div>';
+  }
+  function footer(disc){
+    var links = ['Terms of Service','Privacy Center','Do Not Sell or Share My Personal Information','AdChoices','Security Center','Card Agreements','Servicemember Benefits','Site Map']
+      .map(function(x){ return '<span>'+x+'</span>'; }).join('');
+    return '<div class="ax-foot">'+(disc===false?'':'<div class="ax-disc">American Express&reg; Business Line of Credit disclosures</div>')+
+      '<div class="ax-footin">'+wordmark()+'<div class="ax-flinks">'+links+'</div>'+
+      '<p>All users of our online services are subject to our Privacy Statement and agree to be bound by the Terms of Service. Please review.</p>'+
+      '<p>&copy; 2026 American Express. All rights reserved</p></div></div>';
+  }
+  function cont(label){ return '<button type="button" class="ax-btn" data-act="next">'+(label||'Continue')+'</button>'; }
+  function field(label, k, o){
+    o = o || {};
+    var id = 'ax-'+k;
+    return (label ? '<label class="ax-label" for="'+id+'">'+label+(o.info?' <span class="ax-a" style="display:inline-flex;vertical-align:-3px">'+I.info+'</span>':'')+'</label>' : '')+
+      '<div class="ax-inwrap"><input id="'+id+'" class="ax-input'+(o.narrow?' narrow':'')+'" data-k="'+k+'" value="'+esc(S[k])+'" placeholder="'+esc(o.ph||'')+'"'+(label?'':' aria-label="'+esc(o.aria||'')+'"')+' autocomplete="off"></div>';
+  }
+  function search(label, k){
+    return '<label class="ax-label" for="ax-'+k+'">'+label+'</label><div class="ax-inwrap ax-search"><input id="ax-'+k+'" class="ax-input" data-k="'+k+'" value="'+esc(S[k])+'" placeholder="Search for an address" autocomplete="off"><span>'+I.search+'</span></div>';
+  }
+  function selectF(label, k, opts, ph){
+    return (label ? '<label class="ax-label" for="ax-'+k+'">'+label+'</label>' : '')+
+      '<select id="ax-'+k+'" class="ax-select" data-k="'+k+'"'+(label?'':' aria-label="'+esc(ph||k)+'"')+'>'+
+      '<option value="">'+esc(ph||'Select')+'</option>'+
+      opts.map(function(x){ return '<option'+(S[k]===x?' selected':'')+'>'+esc(x)+'</option>'; }).join('')+'</select>';
+  }
+  function radios(k, opts){
+    return '<div class="ax-radios" role="radiogroup">'+opts.map(function(x){
+      return '<label class="ax-r"><input type="radio" name="ax-'+k+'" data-k="'+k+'" value="'+esc(x)+'"'+(S[k]===x?' checked':'')+'><span>'+esc(x)+'</span></label>';
+    }).join('')+'</div>';
+  }
+  function form(step, inner){ return appHead(step)+'<div class="ax-form">'+inner+'</div>'+footer(); }
+  function bizAddr(){ return S.bizStreet+(S.bizApt?', '+S.bizApt:'')+'\n'+S.bizCity+', '+S.bizState+' '+S.bizZip; }
+  function homeAddr(){ return S.homeSame ? bizAddr() : S.homeStreet+(S.homeApt?', '+S.homeApt:'')+'\n'+S.homeCity+', '+S.homeState+' '+S.homeZip; }
+
+  function landing(){
+    return globalBar()+
+      '<div class="ax-land"><div class="ax-phone"><div class="ax-ph">'+
+        '<div class="ax-ph-t">Business Line of Credit</div>'+
+        '<div class="ax-ph-card"><small>Available line of credit</small><b>$50,000.00</b><small>of $50,000.00</small><i></i><span class="ax-a">View account details</span></div>'+
+        '<div class="ax-ph-pills"><span>Withdraw funds</span><span>Make a repayment</span></div>'+
+        '<div class="ax-ph-sec"><b>Next repayment</b><div><span>Minimum due:</span><span>$0.00</span></div><div><span>Outstanding balance:</span><span>$0.00</span></div></div>'+
+      '</div></div>'+
+      '<div class="ax-lockup">BUSINESS<br>LINE OF CREDIT</div>'+
+      '<div class="ax-land-copy"><h1>Pay fees only on what you borrow</h1>'+
+        '<p>Apply for an American Express&reg; Business Line of Credit.<sup>1</sup> If approved: use what you need, when you need it. Only pay loan fees on what you use.</p>'+
+        '<button type="button" class="ax-btn-w" data-act="next">Get Started</button></div></div>'+footer(false);
+  }
+
+  /* Each screen: id, label, render, valid, rail {t, b, chips, rec} */
+  var APP = [
+    { id:'dashboard', label:'Dashboard: pre-approved offer',
+      render:function(){
+        function crow(kind,name,last,bal){ return '<div class="ax-crow"><span class="ax-art '+kind+'"></span><div><b>'+name+' *'+last+'</b><small>American Express</small></div><div class="ax-bal"><b>'+bal+'</b><small>Total Balance</small></div></div>'; }
+        function exp(name,sub){ return '<div class="ax-exp">'+logo(26)+'<div><b>'+name+'</b><small>'+sub+'</small></div><em>Autopay</em></div>'; }
+        return globalBar()+acctBar('Dashboard')+
+          '<div class="ax-gridbg"><div class="ax-hero"><div class="ax-greet">Good morning, DANA!</div><span class="ax-pill">'+I.dollar+'Make a Payment'+I.right+'</span></div></div>'+
+          '<div class="ax-dash"><div class="ax-col"><div class="ax-card"><div class="ax-cardh"><h3>Account Balances</h3><span class="ax-a" style="display:flex;gap:14px;align-items:center">'+I.plus+'<b style="letter-spacing:2px">&middot;&middot;&middot;</b></span></div>'+
+            '<div class="ax-group"><span>'+I.chev+' Cards</span><b>$6,120.50</b></div>'+
+            crow('green','Business Green Rewards Card','1001','$0.00')+crow('gold','Business Gold Card','1002','$1,902.14')+'</div></div>'+
+          '<div class="ax-col"><div class="ax-card"><div class="ax-cardh"><h3>Upcoming Expenses <span class="ax-a" style="display:inline-flex;vertical-align:-2px">'+I.info+'</span></h3><small>Next 30 Days</small></div>'+
+            exp('Business Gold Card *1002','Scheduled for the 19th from checking *4410')+exp('Business Gold Card *1002','Scheduled for the 23rd from checking *4410')+'</div>'+
+          '<div class="ax-card ax-pre"><div class="ax-cardh"><h3>You\'re Pre-Approved</h3><span class="ax-a">'+I.brief+'</span></div><p>Apply for an Amex&reg; Business Line of Credit. Terms apply.</p><button type="button" class="ax-btn-o" data-act="next">Learn More</button></div>'+
+          '<div class="ax-card"><h3 class="ax-sm">Membership Rewards&reg; points</h3><div class="ax-mr">48,210</div><span class="ax-a">Explore rewards</span></div></div></div>';
+      },
+      rail:{ t:'Already logged in, already known',
+        b:'The customer arrives through their existing Amex login: one login and one profile. The account is created straight after login, not at submission, so checks can start on the first screen of the application. The offer itself is a pre-approval placed on the dashboard.' } },
+
+    { id:'landing', label:'Product landing', render:landing,
+      rail:{ t:'Product intent, one application',
+        b:'This customer came in wanting a line of credit. A customer starting from Business Checking or Payments goes through the same application and gives the same, or nearly the same, information.' } },
+
+    { id:'eligibility', label:'Eligibility check',
+      render:function(){
+        return '<div inert>'+landing()+'</div>'+
+          '<div class="ax-overlay"><div class="ax-modal" role="dialog" aria-modal="true" aria-labelledby="ax-elig-t">'+
+          '<button type="button" class="ax-x" data-act="back" aria-label="Close">'+I.close+'</button>'+
+          '<h2 id="ax-elig-t">Before you begin your application, you must meet these minimum criteria</h2>'+
+          '<ul><li><b>Personal credit score:</b> 660+ FICO</li><li><b>Time in business:</b> 1+ year</li><li><b>Average monthly revenue:</b> $3,000+</li></ul>'+
+          '<label class="ax-chk"><input type="checkbox" data-k="eligible"'+(S.eligible?' checked':'')+'><span>I confirm that my business and I meet all the above criteria, otherwise my application will not be approved.</span></label>'+
+          '<div class="ax-mbtns"><button type="button" class="ax-btn" data-act="next">Start Application</button><button type="button" class="ax-btn-o2" data-act="back">Exit</button></div></div></div>';
+      },
+      valid:function(){ return S.eligible; },
+      rail:{ t:'Stop unqualified applicants at the door',
+        b:'Straight-through processing was flat even while application time and click-through improved. Declines clustered on three criteria: credit score, time in business, monthly revenue. This check went live two days after the data showed it. Only qualified customers entered the funnel, the decline rate fell and straight-through processing rose.',
+        chips:['Built in 2 days'], rec:'Start Application stays disabled until the box is ticked, as in the live flow.' } },
+
+    { id:'prefill', label:'Pre-fill',
+      render:function(){
+        function rc(v,name){ return '<label class="ax-rcard"><input type="radio" name="ax-card" data-k="card" value="'+v+'"'+(S.card===v?' checked':'')+'><span><b>'+name+'</b><small>'+S.bizName+'</small></span></label>'; }
+        return appHead(0)+'<div class="ax-center"><span class="ax-pico ax-a">'+I.person+'</span>'+
+          '<h2 class="ax-ctitle">Select an account to pre-fill your information</h2>'+
+          '<p class="ax-cbody">Your American Express Card profile information will be used to create your Business Blueprint profile and pre-fill your application for any of our products.</p>'+
+          rc('green','American Express&reg; Business Green Rewards Card *1001')+rc('gold','American Express&reg; Business Gold Card *1002')+
+          '<button type="button" class="ax-btn full" data-act="next">Continue</button>'+
+          '<div><button type="button" class="ax-link ax-mt" data-act="next">Do not pre-fill my information</button></div></div>'+footer();
+      },
+      valid:function(){ return !!S.card; },
+      rail:{ t:'Confirm, don\'t retype',
+        b:'The card account pre-fills the application, so an existing customer confirms details instead of typing them. Steps 1 and 6 of 16 collect demographic details. For an existing customer they come from the card profile and the screens never appear. A new customer answers them.',
+        rec:'That is why the counter starts at 2 on the next screen.' } },
+
+    { id:'address', label:'Step 2: business address', step:2,
+      render:function(){
+        return form(2, '<h2 class="ax-q">What\'s Your Business Address?</h2>'+
+          '<p class="ax-help">Please note that you cannot use a P.O. Box, a Commercial Mail Receiving Agency (CMRA), or a Registered Agent as your address.</p>'+
+          search('Street Address','bizStreet')+field('Apt, Suite, etc. (Optional)','bizApt')+field('City','bizCity')+
+          '<div class="ax-2col"><div>'+selectF('State','bizState',STATES)+'</div><div>'+field('ZIP Code','bizZip')+'</div></div>'+
+          '<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return S.bizStreet && S.bizCity && S.bizState && /^\d{5}$/.test(S.bizZip); },
+      rail:{ t:'One question per page',
+        b:'The long-form application became one question per page, and Business Checking\'s long form moved into the same pattern. Less on each screen, and click-through measured at every step, so drop-off shows exactly where it happens.',
+        chips:['Application time 9 to 6 minutes','Click-through 82% to 97%'], rec:'Results are for the whole flow, not this screen.' } },
+
+    { id:'verify', label:'Address check', step:2,
+      render:function(){
+        function ac(v,title,lines){ return '<label class="ax-rcard"><input type="radio" name="ax-addr" data-k="addrChoice" value="'+v+'"'+(S.addrChoice===v?' checked':'')+'><span><b style="font-weight:700">'+title+'</b><small style="white-space:pre-line">'+lines+'</small></span></label>'; }
+        return form(2, '<h2 class="ax-q">Which address would you like to use?</h2>'+
+          '<p class="ax-help">We couldn\'t find the exact address you entered, but there is a USPS official address that is similar. Please select the correct address or edit as needed.</p>'+
+          ac('verified','Verified Address','1200 HARBORLINE WAY\nSTAMFORD CT 06901-1203')+ac('entered','Address You Entered',esc(bizAddr()))+
+          '<div style="margin-top:22px;display:flex;gap:18px;align-items:center">'+cont()+'<button type="button" class="ax-link" data-act="back">Edit Your Address</button></div>');
+      },
+      rail:{ t:'Checked while the customer is still here',
+        b:'The address is matched to the official USPS record inside the flow, before anything is submitted. Problems get fixed on the screen where they happen, not in a pend queue later.' } },
+
+    { id:'started', label:'Step 3: start date', step:3,
+      render:function(){
+        return form(3, '<h2 class="ax-q">When did you start your business?</h2>'+
+          '<p class="ax-help">The business must have started at least a year ago to be eligible for American Express&reg; Business Line of Credit.</p>'+
+          field('', 'started', {ph:'MM/YYYY', narrow:true, aria:'Business start date, MM/YYYY'})+'<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return /^\d{2}\/\d{4}$/.test(S.started); },
+      rail:{ t:'Rules aligned across three products',
+        b:'Policy was challenged and rules aligned across Lending, Checking and Payments, on things like eligible industries and demographic fields. Three rule sets would have meant three applications.' } },
+
+    { id:'structure', label:'Step 4: company structure', step:4,
+      render:function(){
+        return form(4, '<h2 class="ax-q">What\'s Your Company Structure?</h2>'+radios('structure',['Sole Proprietorship','Partnership','LLC','Single-Member LLC','Corporation'])+cont());
+      },
+      valid:function(){ return !!S.structure; },
+      rail:{ t:'One risk and controls team for the platform',
+        b:'Controls, risk, privacy, fraud, legal and compliance sat in one platform team that knew every product and pulled in specialists when needed. Change moved fast because the context stayed with one team, and risk calls were made on what that team already knew instead of being rebuilt product by product.' } },
+
+    { id:'workers', label:'Step 5: workers', step:5,
+      render:function(){
+        return form(5, '<h2 class="ax-q">How many workers does your business have?</h2>'+
+          '<p class="ax-help">Include full-time, part-time and seasonal workers and contractors working primarily for the business. Exclude individuals who own 25% or more of the equity, and volunteers.</p>'+
+          selectF('', 'workers', ['1-4','5-9','10-19','20-49','50-99','100+'], 'Please choose a selection')+'<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return !!S.workers; },
+      rail:{ t:'Built to be watched',
+        b:'FullStory ran across product, engineering, marketing, servicing and ops, and sales. Two hours every Friday were set aside for product, data, design and engineering, open to anyone. Rage clicks, bugs and confusing screens surfaced fast. Bugs and incidents fell, A/B test volume rose, and many fixes turned out to be cheap front-end tuning.' } },
+
+    { id:'industry', label:'Step 7: industry', step:7,
+      render:function(){
+        var q = (S.indq || '').toLowerCase();
+        var list = INDUSTRIES.filter(function(x){ return !q || x.toLowerCase().indexOf(q) > -1; })
+          .map(function(x){ return '<li><button type="button" data-ind="'+esc(x)+'">'+esc(x)+'</button></li>'; }).join('');
+        return form(7, '<h2 class="ax-q">What industry is your business in?</h2>'+
+          '<p class="ax-help">Please use the following dropdown menu to find your industry.</p>'+
+          '<div class="ax-ta"><div class="ax-inwrap ax-search"><input id="ax-industry" class="ax-input" data-k="indq" value="'+esc(S.industry || S.indq)+'" placeholder="Search and select" aria-label="Industry" autocomplete="off"><span>'+I.chev+'</span></div>'+
+          '<ul class="ax-talist" hidden>'+(list || '<li><button type="button" disabled>No matches</button></li>')+'</ul></div>'+
+          '<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return !!S.industry; },
+      rail:{ t:'Skipping what is already known',
+        b:'The counter jumps from 5 to 7. Step 6 collects demographic details that came from the card profile, so an existing customer never sees it. A new customer would answer it here.' } },
+
+    { id:'about', label:'Step 8: about you', step:8,
+      render:function(){
+        return form(8, '<h2 class="ax-q">Tell Us About You</h2>'+field('Personal Phone','phone')+
+          '<label class="ax-label" for="ax-ssn">Social Security Number</label>'+
+          '<p class="ax-help small">To help the United States Government fight terrorism and money laundering, Federal law requires us to obtain, verify, and record information that identifies each person who opens an account.</p>'+
+          '<div class="ax-inwrap"><input id="ax-ssn" class="ax-input" type="'+(S.showSsn?'text':'password')+'" data-k="ssn" value="'+esc(S.ssn)+'" placeholder="000-00-0000" autocomplete="off">'+
+          '<button type="button" class="ax-eye" data-act="ssn" aria-label="'+(S.showSsn?'Hide':'Show')+' Social Security Number">'+I.eye+'</button></div>'+
+          '<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return S.phone && S.ssn; },
+      rail:{ t:'Checks already running',
+        b:'Because the account was created at login, identity and risk checks start early instead of waiting for submission. New external checks were added, and existing checks from the Amex card application were reused to speed approval and size risk earlier. For an existing Card customer identity is carried by the login and the Card profile, so there is no licence or passport to photograph.' } },
+
+    { id:'home', label:'Step 9: home address', step:9,
+      render:function(){
+        var more = S.homeSame ? '' : search('Street Address','homeStreet')+field('Apt, Suite, etc. (Optional)','homeApt')+field('City','homeCity')+
+          '<div class="ax-2col"><div>'+selectF('State','homeState',STATES)+'</div><div>'+field('ZIP Code','homeZip')+'</div></div>';
+        return form(9, '<h2 class="ax-q">What\'s Your Home Address?</h2>'+
+          '<p class="ax-help">Please note that you cannot use a P.O. Box, a Commercial Mail Receiving Agency (CMRA), or a Registered Agent as your address.</p>'+
+          '<label class="ax-chk"><input type="checkbox" data-k="homeSame"'+(S.homeSame?' checked':'')+'><span>My home address is the same as my business address</span></label>'+
+          more+'<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return S.homeSame || (S.homeStreet && S.homeCity && S.homeState && /^\d{5}$/.test(S.homeZip)); },
+      rail:{ t:'Every screen saves',
+        b:'Each screen before the review page creates or updates the account. Only the review page sends an application to the back end. That split is what made drop-out recoverable.' } },
+
+    { id:'role', label:'Step 10: role', step:10,
+      render:function(){
+        return form(10, '<h2 class="ax-q">Which role best represents your position in the company?</h2>'+
+          radios('role',['General Manager','Owner','Partner','President/Chairman','Treasurer','VP','Other Authorizing Officer'])+cont());
+      },
+      valid:function(){ return !!S.role; },
+      rail:{ t:'Drop-out became an audience',
+        b:'A customer who stopped here was still known. Follow-up came first. Once the CDP was in, they were brought back with targeted, personalised marketing on LinkedIn and Instagram. Fewer sales calls, lower cost of acquisition.' } },
+
+    { id:'owners', label:'Step 11: ownership', step:11,
+      render:function(){
+        return form(11, '<h2 class="ax-q">Are there any individuals, other than yourself, that have direct or indirect ownership of at least 25% of '+S.bizName+'?</h2>'+
+          '<p class="ax-help">You will need to provide name, residential address, date of birth, and Social Security Number for these owners before your application is complete.</p>'+
+          radios('owners',['Yes','No'])+
+          (S.owners==='Yes' ? '<p class="ax-note">In the live flow, each owner\'s details are collected next. That step is not rebuilt here.</p>' : '')+
+          cont()+
+          '<details class="ax-why"><summary>Why Do You Need This?</summary><p>Federal law requires us to verify the identity of each individual who owns 25% or more of the business.</p></details>');
+      },
+      valid:function(){ return !!S.owners; },
+      rail:{ t:'The flow adapts',
+        b:'Answer No and a step disappears: the counter drops from 16 to 15. The application asks only what this customer needs. The same logic runs across products, so a second product asks only the incremental questions.' } },
+
+    { id:'revenue', label:'Step 12: revenue', step:12,
+      render:function(){
+        return form(after11(12), '<h2 class="ax-q">What is the gross annual revenue of your business?</h2>'+
+          '<p class="ax-help">Gross annual revenue in the last full fiscal year.</p>'+
+          field('', 'revenue', {ph:'e.g. $100,000', aria:'Gross annual revenue'})+'<div style="margin-top:28px">'+cont()+'</div>'+
+          '<details class="ax-why"><summary>How do I calculate my annual business revenue?</summary><p>Use the total your business earned in the last full fiscal year, before any expenses are taken out.</p></details>');
+      },
+      valid:function(){ return /\d/.test(S.revenue); },
+      rail:{ t:'Nothing to upload',
+        b:'A lender normally wants tax returns and six months of statements at this point. This asks for a number. Identity was settled at login, and the number is checked against what Amex already holds on this customer across Cards, Checking and Lending, then against the bank transaction data once accounts are connected. Documents belong to the pend path, not to the way in.' } },
+
+    { id:'income', label:'Step 13: income', step:13,
+      render:function(){
+        return form(after11(13), '<h2 class="ax-q">What\'s Your Total Annual Income?</h2>'+
+          '<p class="ax-help">Your estimated total annual income will help us manage your line of credit on an ongoing basis.</p>'+
+          field('Total Annual Income','income',{info:true})+field('Non-Taxable Annual Income (Optional)','nontax',{info:true, ph:'$'})+
+          '<div style="margin-top:28px">'+cont()+'</div>');
+      },
+      valid:function(){ return /\d/.test(S.income); },
+      rail:{ t:'Why MATU',
+        b:'An origination team measured only on approvals and speed will push cost into credit and servicing. Measuring whether the customer was still a Monthly Active Transacting User closed that loop. Behind it sat the rest of the set: cost of acquisition, products per customer and straight-through processing at the top, then application time for a first and a second product, click-through by step, conversion, pend rate, time to clear a pend and cost to serve.',
+        chips:['Monthly Active Transacting Users (MATU) 15% to 41%'] } },
+
+    { id:'review', label:'Review and submit', step:14,
+      render:function(){
+        function row(l, v, go, ok){
+          var edit = go === null ? '<span></span>' : (go === 'static' ? '<span class="ax-edit static">Edit '+I.right+'</span>' : '<button type="button" class="ax-edit" data-act="edit:'+go+'">Edit '+I.right+'</button>');
+          return '<div class="ax-row"><dt>'+l+'</dt><dd>'+esc(v)+(ok?'<span class="ax-ok">'+I.phone+'</span>':'')+'</dd>'+edit+'</div>';
+        }
+        var last4 = String(S.ssn).replace(/\D/g,'').slice(-4);
+        return appHead(after11(14))+'<div class="ax-form">'+
+          '<h2 class="ax-q">Please review your Business Line of Credit application.</h2>'+
+          '<p class="ax-help">Providing inaccurate info could delay our decision. <span class="ax-a">Contact us</span> to update certain details.</p>'+
+          '<div class="ax-box"><h3>Business Details</h3><dl style="margin:0">'+
+            row('Business Name', S.bizName, null)+row('Business Phone', S.bizPhone, 'static', true)+row('Date Established', S.started, 'started')+
+            row('Gross Annual Revenue', S.revenue, 'revenue')+row('Business Address', bizAddr(), 'address')+row('Company Structure', S.structure, 'structure')+
+            row('Number of Workers', S.workers, 'workers')+row('Business Tax ID', S.ein, 'static')+row('Industry', S.industry, 'industry')+
+          '</dl></div>'+
+          '<div class="ax-box"><h3>Personal Details</h3><dl style="margin:0">'+
+            row('Legal Name', S.legalName, null)+row('Date of Birth', S.dob, null)+row('Personal Phone', S.phone, 'about', true)+
+            row('Social Security Number', '***-**-'+last4, 'about')+row('Home Address', homeAddr(), 'home')+row('Role of Primary', S.role, 'role')+
+            row('Total Annual Income', S.income, 'income')+row('Non-taxable Annual Income', S.nontax || '$0', 'income')+
+          '</dl></div>'+
+          '<div class="ax-box"><details class="ax-tc"><summary><span class="ax-a" style="display:inline-flex">'+I.check+'</span>Review Terms and Conditions</summary><p>Business Line of Credit terms and conditions.</p></details></div>'+
+          '<div class="ax-box"><div class="ax-disc-h"><span class="ax-a" style="display:inline-flex">'+I.checkO+'</span>Review Disclosures</div><div class="ax-disc-body">'+
+            '<p>By clicking "Submit Application", you, as the authorized representative of the business listed above (the "Business"):</p><ol>'+
+            '<li>are authorized to submit this application on behalf of the Business;</li>'+
+            '<li>certify the application information you provide is to the best of your knowledge accurate, complete and checked for errors prior to submission;</li>'+
+            '<li>authorize us to verify this information and to obtain reports from time to time about you personally and the Business from consumer and commercial reporting agencies;</li>'+
+            '<li>confirm the line of credit is an all-digital product, and consent to receive communications and sign documents electronically.</li></ol></div></div>'+
+          '<button type="button" class="ax-btn full" data-act="next">Submit Application</button></div>'+footer();
+      },
+      rail:{ t:'The only screen that submits',
+        b:'Every detail in one place, each row editable. This page is the application the back end receives. Everything before it created or updated the account, which is why a customer who dropped out earlier could still be followed up.',
+        rec:'Legal name and date of birth have no Edit link: they came from the card profile.' } },
+
+    { id:'decision', label:'Decision',
+      render:function(){
+        return appHead(0)+'<div class="ax-proc"><h2 id="ax-proc-t">Just One Moment</h2><p id="ax-proc-s">We\'re processing the information you submitted.</p>'+
+          '<div class="ax-bar"><i id="ax-proc-bar" style="width:0%;transition:none"></i></div><div class="ax-pct" id="ax-proc-p">0%</div>'+
+          '<div class="ax-dyk" id="ax-dyk" hidden>'+I.bank+'<div><b>Did you know?</b><p>By keeping your business bank accounts connected, American Express&reg; Business Line of Credit can analyze your business revenue and transactions so we can review your business\'s line of credit on an ongoing basis.</p></div></div></div>'+footer();
+      },
+      enter:function(){
+        var t0 = Date.now(), dur = 2400;
+        tick();
+        function tick(){
+          var p = Math.min(100, Math.round((Date.now()-t0)/dur*100));
+          var bar = vp.querySelector('#ax-proc-bar'), pc = vp.querySelector('#ax-proc-p');
+          if (!bar) return;
+          bar.style.width = p+'%'; pc.textContent = p+'%';
+          if (p >= 45) {
+            vp.querySelector('#ax-proc-t').textContent = 'We\'re Reviewing Your Application';
+            vp.querySelector('#ax-proc-s').hidden = true;
+            vp.querySelector('#ax-dyk').hidden = false;
+          }
+          if (p < 100) timers.push(setTimeout(tick, 40));
+          else timers.push(setTimeout(function(){ go(idOf('approval')); }, 500));
+        }
+      },
+      rail:{ t:'A decision inside the session',
+        b:'Shortened here. The checks that started at login are what let most applications decide straight through instead of pending for manual review.',
+        chips:['Straight-through processing 60% to 81%','Pend rate 40% to 28%'],
+        rec:'The "Did you know?" card is the live copy: connected bank accounts keep the line of credit under review.' } },
+
+    { id:'approval', label:'Approval',
+      render:function(){
+        var colours = ['#9cc3ec','#d7dde4','#6fa6e0','#c9d7e8','#b8c2cc'], c = '';
+        for (var i = 0; i < 46; i++) {
+          c += '<i style="left:'+((i*37)%100)+'%;top:'+((i*53)%92)+'%;background:'+colours[i%5]+';transform:rotate('+((i*47)%180)+'deg)"></i>';
+        }
+        function kv(k, v){ return '<div class="ax-kv"><span>'+k+'</span><span>'+v+'</span></div>'; }
+        function ql(t){ return '<div class="ax-ql"><span>'+t+'</span>'+I.right+'</div>'; }
+        return globalBar()+acctBar('')+'<div class="ax-gridbg ax-band"></div>'+
+          '<div class="ax-acwrap"><div class="ax-prodcard"><div class="ax-prodid">'+logo(30)+'<div><b>Business Line of Credit</b><small>American Express</small></div></div>'+
+            '<div class="ax-ptabs"><span class="on">Home</span><span>Repayments</span><span>Activity &amp; Statements</span><span>Manage</span></div></div>'+
+          '<div class="ax-acgrid"><div>'+
+            '<div class="ax-card"><h3>Available line of credit</h3><div class="ax-big">$50,000.00</div><small>of $50,000.00</small><div class="ax-bar" style="margin-top:10px"><i style="width:100%"></i></div></div>'+
+            '<div class="ax-card"><h3 style="margin-bottom:8px">Repayment details</h3>'+kv('Outstanding balance','$0.00')+kv('Next repayment date','Not yet scheduled')+kv('Minimum due','$0.00')+kv('Repayment account','<span class="ax-a">Select</span>')+'</div>'+
+            '<div class="ax-card ax-linkc">'+I.bank+'<b>Link accounts you use for your business</b></div>'+
+          '</div><div><div class="ax-card"><h3 style="margin-bottom:6px">Quick links</h3>'+ql('Make a repayment')+ql('Manage Payees')+ql('Statements and documents')+ql('Frequently asked questions')+'</div></div></div></div>'+
+          '<div class="ax-overlay"><div class="ax-confetti" aria-hidden="true">'+c+'</div>'+
+            '<div class="ax-modal ax-appr" role="dialog" aria-modal="true" aria-labelledby="ax-appr-t">'+
+            '<button type="button" class="ax-x" data-act="done" aria-label="Close">'+I.close+'</button>'+
+            '<span class="ax-a" style="display:inline-flex">'+I.bigdollar+'</span>'+
+            '<h2 id="ax-appr-t">Congratulations! Your business has been approved for a line of credit of $50,000</h2>'+
+            '<div class="ax-mbtns col"><button type="button" class="ax-btn" data-act="done">Use it to fund my bank account</button><button type="button" class="ax-btn-o2" data-act="done">Use it to send funds to a payee</button></div></div></div>';
+      },
+      rail:{ t:'Money where the customer needs it',
+        b:'A draw settles instantly into an American Express Business Checking account. Into an external account it takes 2 to 3 days. The wait does not disappear, it disappears for customers who hold the checking account as well, which is why the cross-sell sits inside this flow. Small business owners want their money now, so holding more of the suite is worth more than holding one product. Linking the business bank account was the biggest friction point in the flow, and click-through on that step went from 51% to 65%+.',
+        chips:['Instant into a Business Checking account, 2 to 3 days to an external one','Bank connection click-through 51% to 65%+'],
+        rec:'The recording ends here. The checking cross-sell and bank linking screens are not in it.' } }
+  ];
+
+  /* ---------- dashboard flow ---------- */
+  function heroBar(pills){
+    return '<div class="ax-gridbg"><div class="ax-hero"><div class="ax-greet">Good morning, DANA!</div><div class="ax-pills">'+pills+'</div></div></div>';
+  }
+  function pill(icon, label){ return '<span class="ax-pill">'+icon+label+I.right+'</span>'; }
+  function cfCard(){
+    return '<div class="ax-card ax-cf"><div class="ax-cardh"><h3>Cash Flow This Month</h3><span class="ax-a ax-cfmore">View in Insights'+I.right+'</span></div>'+
+      '<div class="ax-cfrow"><div><small>Money In</small><b>$18,123.52</b><i class="in" style="width:100%"></i></div>'+
+      '<div><small>Money Out</small><b>$5,523.92</b><i class="out" style="width:31%"></i></div></div>'+
+      '<p class="ax-cffoot">Across every connected account, updated daily.</p></div>';
+  }
+  function group(name, total){ return '<div class="ax-group"><span>'+I.chev+' '+name+'</span><b>'+total+'</b></div>'; }
+  function acctRow(art, name, last, inst, val, sub, extra){
+    return '<div class="ax-crow"><span class="ax-art '+art+'"></span><div><b>'+name+(last?' *'+last:'')+'</b><small>'+inst+'</small>'+(extra||'')+'</div>'+
+      '<div class="ax-bal"><b>'+val+'</b><small>'+sub+'</small></div></div>';
+  }
+  function banner(kind, icon, text, link){
+    return '<div class="ax-sub '+kind+'">'+icon+'<p>'+text+'</p><span class="ax-a">'+link+'</span></div>';
+  }
+  function mrCard(){
+    return '<div class="ax-card"><h3 class="ax-sm">Membership Rewards&reg; points</h3><div class="ax-mr">48,210</div><span class="ax-a">Explore rewards</span></div>';
+  }
+  function toolRow(icon, title, body){
+    return '<div class="ax-tool">'+icon+'<div><b>'+title+'</b><p>'+body+'</p></div>'+I.right+'</div>';
+  }
+  function balCard(rows){
+    return '<div class="ax-card"><div class="ax-cardh"><h3>Account Balances</h3><span class="ax-a" style="display:flex;gap:14px;align-items:center">'+I.plus+'<b style="letter-spacing:2px">&middot;&middot;&middot;</b></span></div>'+rows+'</div>';
+  }
+
+  var DASH = [
+    { id:'dash-home', label:'Dashboard after approval',
+      render:function(){
+        return globalBar()+acctBar('Dashboard')+heroBar(pill(I.dollar,'Make a Payment')+pill(I.brief,'Take a Loan'))+
+          '<div class="ax-dash"><div class="ax-col">'+cfCard()+
+            balCard(
+              group('Bank Accounts','$18,847.00')+
+              acctRow('bank','Business Checking','4410','First Harbor Bank','$18,847.00','1 Day Ago &middot; Total Balance')+
+              group('Cards','$1,902.14')+
+              acctRow('green','Business Green Rewards Card','1001','American Express','$0.00','Total Balance',
+                banner('info', I.brief, 'Your new Card is on the way. Expected to arrive by the 24th.', 'Track Card'))+
+              acctRow('gold','Business Gold Card','1002','American Express','$1,902.14','Total Balance',
+                banner('offer', I.star, 'You are eligible to upgrade to the Business Platinum Card&reg;. Terms apply.', 'See Offer'))+
+              group('Funding','$0.00')+
+              acctRow('loc','Business Line of Credit','','American Express','$0.00','Outstanding Balance',
+                '<small class="ax-avail">$50,000.00 Available Line of Credit</small>')
+            )+'</div>'+
+          '<div class="ax-col"><div class="ax-card"><div class="ax-cardh"><h3>Upcoming Expenses <span class="ax-a" style="display:inline-flex;vertical-align:-2px">'+I.info+'</span></h3><small>Next 30 Days</small></div>'+
+            '<div class="ax-exp">'+logo(26)+'<div><b>Business Gold Card *1002</b><small>Scheduled for the 23rd from checking *4410</small></div><em>Autopay</em></div></div>'+
+            '<div class="ax-card ax-pre"><div class="ax-cardh"><h3>Business Checking</h3><span class="ax-a">'+I.bank+'</span></div><p>Draws settle instantly into an American Express&reg; Business Checking account. Into an external account they take 2 to 3 days. Member FDIC. Terms apply.</p><button type="button" class="ax-btn-o" data-act="done">Learn More</button></div>'+
+            mrCard()+'</div></div>';
+      },
+      rail:{ t:'The dashboard changes with what you hold',
+        b:'The quick actions stay as they are, Make a Payment and Take a Loan, because both still apply once a line is open. What changes is the account list: a Funding group appears with the available line and the outstanding balance on the row, so the position is visible without opening the product. Navigation is built around what the customer came to do rather than which product team owns it.',
+        chips:['86% monthly returning users on mobile','70% on web'] } },
+
+    { id:'dash-cashflow', label:'Cash flow, servicing and tools',
+      render:function(){
+        return globalBar()+acctBar('Dashboard')+heroBar(pill(I.dollar,'Make a Payment')+pill(I.brief,'Take a Loan'))+
+          '<div class="ax-dash"><div class="ax-col">'+cfCard()+
+            '<div class="ax-card"><h3 style="margin-bottom:10px">Tools To Run Your Business</h3>'+
+              toolRow(I.bank,'American Express&reg; Business Checking','Online banking with no monthly maintenance fees. Member FDIC. Terms apply.')+
+              toolRow(I.cards,'Create Virtual Cards for control, visibility and added security','Each Virtual Card has its own number tied to your Business Cards, with adjustable spending controls. Terms apply.')+
+              toolRow(I.people,'Add Employee Cards and earn rewards on eligible purchases','Give your team cards on the account and keep spending visible. Terms apply.')+
+            '</div></div>'+
+          '<div class="ax-col">'+mrCard()+
+            '<div class="ax-card ax-pre"><div class="ax-cardh"><h3>Start taking payments</h3><span class="ax-a">'+I.dollar+'</span></div><p>Accept card payments from your customers and see them land in the same cash flow view. Terms apply.</p><span class="ax-a">Learn More</span></div>'+
+          '</div></div>';
+      },
+      rail:{ t:'One surface for cash flow, servicing and the next product',
+        b:'Money in and money out sit at the top of the page, powered by the insights data across every connected account, and open into Insights. Servicing messages and the next product sit in the same list rather than on a separate site, which is part of how self-serve took cost out.',
+        chips:['Servicing cost down around 8%','Products per customer 1.2 to 2.6'] } },
+
+    { id:'dash-marketing', label:'Marketing real estate',
+      render:function(){
+        return globalBar()+acctBar('Dashboard')+heroBar(pill(I.dollar,'Make a Payment')+pill(I.brief,'Take a Loan'))+
+          '<div class="ax-dash"><div class="ax-col">'+
+            balCard(
+              group('Cards','$1,902.14')+
+              acctRow('green','Business Green Rewards Card','1001','American Express','$0.00','Total Balance',
+                banner('offer', I.dollar, 'Enrol in a 6.99% promotional APR for 6 billing cycles on eligible new purchases. Terms apply.', 'Enrol Now'))+
+              acctRow('gold','Business Gold Card','1002','American Express','$1,902.14','Total Balance',
+                banner('offer', I.star, 'You are eligible to upgrade to the Business Platinum Card&reg;. Terms apply.', 'See Offer'))
+            )+'</div>'+
+          '<div class="ax-col">'+
+            '<div class="ax-card ax-pre"><div class="ax-cardh"><h3>Add Employee Cards</h3><span class="ax-a">'+I.people+'</span></div><p>Receive real-time alerts to help you know who is spending and where. Terms apply.</p><span class="ax-a">Learn More</span></div>'+
+            '<div class="ax-card"><div class="ax-cardh"><h3>Refer a Business</h3><span class="ax-a">'+I.star+'</span></div><p>Share the benefits, score the rewards. Refer a fellow business owner and earn rewards for each eligible referral. Terms and cap apply.</p><span class="ax-a">Learn More</span></div>'+
+            '<div class="ax-offergroup">Based on your Membership</div>'+
+            '<div class="ax-card ax-offercard"><div class="ax-offer"><span class="ax-art plat"></span><div><b>Add an Additional Card</b><p>Earn bonus Membership Rewards&reg; points after qualifying spend in your first 3 months of Card Membership. Terms apply.</p><span class="ax-a">Learn More</span></div></div></div>'+
+            mrCard()+
+          '</div></div>';
+      },
+      rail:{ t:'The dashboard as an acquisition channel',
+        b:'Read the order. The first two offers are open to any customer: add employee cards, refer another business. Then a group headed Based on your Membership, chosen for this customer by the customer data platform off their own cash flow and card data. Growth marketing built the real estate, and the offer sits beside the account it applies to rather than arriving in an email.',
+        chips:['7-day multi-product attach 2% to 20%','Next best action lifted conversion 5%+ over rule-based targeting','Near-zero marginal acquisition cost'],
+        rec:'Offer copy follows the live product. Reward values are deliberately generic here, because the real ones are targeted to an individual account rather than public rates.' } }
+  ];
+
+  /* ---------- insights flow ---------- */
+  function insChrome(active){
+    var tabs = ['Home','Cash Flow','Expenses','Transactions','Preferences'].map(function(t){
+      return '<span class="ax-instab'+(t===active?' on':'')+'">'+t+'</span>';
+    }).join('');
+    return globalBar()+acctBar('Insights')+'<div class="ax-insband"></div><div class="ax-instabs">'+tabs+'</div>';
+  }
+  function insTitle(title, sub, acts){
+    return '<div class="ax-institle"><div><h2>'+title+'</h2>'+(sub?'<div class="ax-sm2">'+sub+'</div>':'')+'</div><div class="ax-insacts">'+(acts||'')+'</div></div>';
+  }
+  function linkAccounts(){ return '<span class="ax-a" style="font-size:14px">Learn About Cash Flow</span><span class="ax-btn-pale">'+I.plus+'Link &amp; Manage Accounts</span>'; }
+  function selects(){
+    return '<div class="ax-selects"><div><label>View by date</label><div class="ax-fakesel">Last 12 months</div></div>'+
+      '<div><label>View by account</label><div class="ax-fakesel">Select</div></div></div>';
+  }
+  function bars(vals, cls){
+    var max = Math.max.apply(null, vals.map(function(v){ return Math.abs(v); }));
+    var months = ['Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'];
+    return '<div class="ax-chart">'+vals.map(function(v,i){
+      return '<div><i class="'+(cls||'')+'" style="height:'+Math.round(Math.abs(v)/max*100)+'%"></i><small>'+months[i]+'</small></div>';
+    }).join('')+'</div>';
+  }
+  var TXNS = [
+    ['20 Aug 2026','MERIDIAN ACCOUNTING LLC INV-4471','Expense','Accounting &amp; Tax Services','-$850.00'],
+    ['12 Aug 2026','NORTHSTAR PACKAGING CO','Expense','Wholesale Supplies','-$2,480.00'],
+    ['08 Aug 2026','HARBOR FREIGHT LINES INV-2291','Expense','Freight &amp; Logistics','-$1,240.00'],
+    ['02 Aug 2026','CLOUDDESK SOFTWARE MONTHLY','Expense','Software &amp; Subscriptions','-$149.00'],
+    ['28 Jul 2026','CUSTOMER DEPOSIT 8842','Income','Sales','$6,300.00']
+  ];
+  function txnTable(withPrompt){
+    var rows = TXNS.map(function(t, i){
+      var prompt = (withPrompt && i === 0) ?
+        '<tr><td colspan="6" style="padding:0 10px 16px"><div class="ax-ruleprompt">Create a rule to always move transactions <b>equals</b> matching <b>'+t[1]+'</b> to <b>Accounting &amp; Tax Services</b>?<div style="margin-top:12px"><span class="ax-btn-o">Create Rule</span></div></div></td></tr>' : '';
+      return '<tr><td><input type="checkbox" aria-label="Select transaction" style="width:18px;height:18px"></td><td>'+t[0]+'</td>'+
+        '<td class="desc"><b>'+t[1]+'</b><small>ID:ST-'+(41822+i)+' HARBORLINE SUPPLY CO WEB</small></td>'+
+        '<td>'+t[2]+'</td><td><span class="ax-catsel">'+t[3]+I.chev+'</span></td>'+
+        '<td>Business Checking<br><small style="color:#666">First Harbor Bank 4410</small></td>'+
+        '<td class="amt">'+t[4]+'</td></tr>'+prompt;
+    }).join('');
+    return '<div class="ax-inscard" style="padding:6px 22px 14px"><table class="ax-tt"><thead><tr><th></th><th>Date</th><th>Description</th><th>Type</th><th>Subcategory</th><th>Account</th><th class="amt">Amount</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+  }
+
+  var INS = [
+    { id:'ins-home', label:'Insights home',
+      render:function(){
+        return insChrome('Home')+'<div class="ax-inswrap"><div class="ax-ins2"><div>'+
+          '<div class="ax-inscard"><div class="ax-insh"><span class="ax-insico">'+I.chart+'</span><h3>September Cash Flow</h3><span class="ax-a">'+I.right+'</span></div>'+
+            '<div class="ax-insbig">$4,180.00</div><p>Money in and money out across every connected account this month.</p>'+
+            '<div class="ax-insstrip"><span>See your cash flow from last month.</span><span class="ax-a">View August Cash Flow '+I.right+'</span></div></div>'+
+          '<div class="ax-inscard"><div class="ax-insh"><span class="ax-insico">'+I.chart+'</span><h3>September Expenses</h3><span class="ax-a">'+I.right+'</span></div>'+
+            '<div style="display:flex;gap:40px"><div><div class="ax-insbig">$2,930.00</div><p>Spent this month</p></div><div><div class="ax-insbig">$5,120.00</div><p>Spent last month</p></div></div></div>'+
+          '</div><div>'+
+          '<div class="ax-inscard"><div class="ax-insh"><span class="ax-insico warn">'+I.info+'</span><h3>Uncategorised Transactions</h3></div>'+
+            '<p>You have <b>11</b> uncategorised transactions.</p><span class="ax-a">Categorise Transactions '+I.right+'</span></div>'+
+          '<div class="ax-inscard"><div class="ax-insh"><span class="ax-insico">'+I.people+'</span><h3>Business Resources</h3></div>'+
+            '<p>Guidance and tools for running the business, matched to what the data shows.</p><span class="ax-a">Visit Business Class</span></div>'+
+          '</div></div></div>';
+      },
+      rail:{ t:'The data has to be clean before it is clever',
+        b:'The first card is this month\'s cash flow, the second is what it cost, and beside them sits the least glamorous card on the page: uncategorised transactions. Categorisation is what makes the forecast and every insight trustworthy, so it gets equal billing rather than being hidden in settings.',
+        chips:['90-day forecast at 97% to 98% accuracy'] } },
+
+    { id:'ins-cashflow', label:'Cash flow',
+      render:function(){
+        return insChrome('Cash Flow')+'<div class="ax-inswrap">'+
+          insTitle('Cash Flow', '', linkAccounts())+
+          '<div style="display:flex;justify-content:space-between;align-items:flex-end;margin:0 0 20px"><div class="ax-toggle"><span class="on">Cash Flow</span><span>Money In</span><span>Money Out</span></div>'+selects()+'</div>'+
+          '<div class="ax-inscard"><div style="display:flex;align-items:baseline;gap:10px"><div class="ax-insbig" style="margin:0">$92,410.00</div><span style="font-size:14px;color:#555">net cash flow last 12 months</span></div>'+
+          bars([5200,6100,4300,7400,6800,5900,8100,7600,9200,8400,7900,8600])+'</div></div>';
+      },
+      rail:{ t:'Every account, one view, one data set',
+        b:'Cash flow reads across the internal accounts and the external ones linked through the data provider. That single set is what the dashboard summary, the forecast and the insights all run on, which is why connection health was treated as a product metric rather than a support problem.',
+        chips:['Broken or expired connections cut from around 25% to under 18%'] } },
+
+    { id:'ins-moneyout', label:'Money out',
+      render:function(){
+        return insChrome('Cash Flow')+'<div class="ax-inswrap">'+
+          '<div style="display:flex;justify-content:space-between;align-items:flex-end;margin:0 0 20px"><div class="ax-toggle"><span class="on">Account</span><span>Category</span></div>'+selects()+'</div>'+
+          '<div class="ax-inscard"><div style="display:flex;align-items:baseline;gap:8px"><div class="ax-insbig" style="margin:0">-$68,240.00</div><span style="font-size:14px;color:#555">spent in <b>last 12 months</b></span></div>'+
+          '<p style="margin:0 0 6px">-$5,686.67 monthly average for the last 12 months</p>'+
+          bars([4100,5200,6400,5900,4800,6100,5400,7200,6800,5100,5900,5340],'neg')+'</div></div>';
+      },
+      rail:{ t:'Spending, split the way the owner thinks',
+        b:'Money out can be read by account or by category, over any window. This is the surface the spend-shift insights come from: a category rising on the checking account becomes a prompt to move that spend onto a card that earns on it.',
+        chips:['Spend shift of 2% to 5%, varying by category'] } },
+
+    { id:'ins-expenses', label:'Expenses by category',
+      render:function(){
+        var cats = [['Wholesale Supplies','$28,400.00','42%',I.brief],['Freight &amp; Logistics','$14,900.00','22%',I.bank],
+          ['Professional Services','$8,650.00','13%',I.people],['Software &amp; Subscriptions','$5,120.00','7%',I.cards]];
+        return insChrome('Expenses')+'<div class="ax-inswrap">'+
+          insTitle('Expenses by Category for last 12 months','', '<span class="ax-a" style="font-size:14px">See all transactions for last 12 months '+I.right+'</span>')+
+          '<div class="ax-inscard">'+cats.map(function(c){
+            return '<div class="ax-catrow"><div class="ax-cathead"><span class="ax-insico">'+c[3]+'</span><span class="ax-a">'+c[0]+'</span><div><b>'+c[1]+'</b><small>'+c[2]+' of Total</small></div></div>'+
+              '<div class="ax-catbar"><i style="width:'+c[2]+'"></i></div><span class="ax-a" style="font-size:13.5px">Show Subcategory</span></div>';
+          }).join('')+'</div></div>';
+      },
+      rail:{ t:'Where the cross-sell comes from',
+        b:'Categories are not decoration. Around 30% of the insights served carry a cross-sell or a spend shift, and they are generated from exactly this breakdown. A forecast shortage becomes a line of credit prompt; a category concentrated on the wrong account becomes a prompt to move it.',
+        chips:['Insight-driven cross-sell converted at 9% to 12%, A/B tested against a held-out control'] } },
+
+    { id:'ins-transactions', label:'Transactions',
+      render:function(){
+        return insChrome('Transactions')+'<div class="ax-inswrap">'+
+          '<div class="ax-whatsnew">'+I.info+'<div><b>What\'s New in Insights</b><p>Now you can create custom rules to categorise and organise your transactions. Rules apply to current and future transactions, so the insights stay consistent.</p></div></div>'+
+          insTitle('Transactions','15 Sep 2025 to 17 Sep 2026', '<span class="ax-a" style="font-size:14px">Learn About Transactions</span><span class="ax-btn-pale">'+I.plus+'Link &amp; Manage Accounts</span>')+
+          '<div style="display:flex;gap:14px;margin:0 0 18px"><span class="ax-chip2">Net Amount <b>$24,170.00</b></span><span class="ax-chip2">Total Transactions <b>148</b></span></div>'+
+          txnTable(false)+'</div>';
+      },
+      rail:{ t:'The ledger the customer can actually work with',
+        b:'Filters, search, export, and a subcategory that can be changed on the row. Watching sessions on this screen is where the small fixes came from, and the Friday session watching habit is what surfaced them.',
+        chips:['Products per customer 1.2 to 2.6'] } },
+
+    { id:'ins-rule', label:'Create a rule',
+      render:function(){
+        return insChrome('Transactions')+'<div class="ax-inswrap">'+
+          insTitle('Transactions','15 Sep 2025 to 17 Sep 2026','')+txnTable(true)+
+          '<div class="ax-toast">'+I.check+'Transaction updated</div></div>';
+      },
+      rail:{ t:'Correct it once, and it stays correct',
+        b:'Recategorising a transaction offers to make it a rule, so the same merchant lands in the right place every time. That is what keeps categorisation accurate as volume grows, without asking the customer to do the work twice.',
+        rec:'The rule prompt and the confirmation toast are both in the recording.' } },
+
+    { id:'ins-preferences', label:'Transaction rules',
+      render:function(){
+        return insChrome('Preferences')+'<div class="ax-inswrap">'+
+          insTitle('Transaction Rules','Automatically categorise current and future transactions with custom rules, so the insights stay consistent.','<span class="ax-btn">'+I.plus+'Create Rule</span>')+
+          '<div class="ax-rulebox"><b style="font-size:15px">Rule Order</b><p style="margin:6px 0 0;font-size:13.5px;color:#555">If several rules share a keyword, the rule higher on the list is applied.</p>'+
+          '<div class="ax-rulerow"><span class="ax-rulepill">1</span><span>If description or merchant:</span><span class="ax-rulepill">equals</span><span>this text:</span><span class="ax-rulepill grow">MERIDIAN ACCOUNTING LLC INV-4471</span></div>'+
+          '<div class="ax-rulerow"><span class="ax-rulepill">2</span><span>If description or merchant:</span><span class="ax-rulepill">contains</span><span>this text:</span><span class="ax-rulepill grow">HARBOR FREIGHT LINES</span></div>'+
+          '</div></div>';
+      },
+      rail:{ t:'Giving the customer the controls',
+        b:'Rules, ordering and settings sit in the product rather than in a support queue. Every rule a customer writes improves the data the forecast and the insights depend on, which is the quiet reason self-serve took cost out of servicing.',
+        chips:['Servicing cost down around 8%'] } }
+  ];
+
+  /* ---------- draw funds flow ---------- */
+  function goBack(){ return '<div class="ax-goback">'+I.chev+' Go Back</div>'; }
+  function loanHead(){ return '<div class="ax-loanhead">$10,000.00 Loan &ndash; Monthly Installments &ndash; 24 Month Term &nbsp; <span class="ax-a">Change Loan Details</span></div>'; }
+  function term(months, fees, total, note){
+    return '<div class="ax-term'+(note?' off':'')+'"><input type="radio" name="ax-term" '+(months===24?'checked':'')+' aria-label="'+months+' months">'+
+      '<div class="t">'+months+' Months'+(note?'<small>'+I.info+note+'</small>':'')+'</div>'+
+      (note?'':'<div class="f">Total Fees: <b>'+fees+'</b><br>Total Amount: <b>'+total+'</b></div>')+'</div>';
+  }
+  var USES = ['Working capital','Buy or lease storage','Buy, lease or repair equipment, technology or vehicles','Cover routine business costs','Expand or remodel my physical business space','Hire employee','Open another location','Pay for marketing or advertising expenses','Payment for goods and services','Purchase inventory or supplies','Update my web or mobile presence'];
+
+  var DRAW = [
+    { id:'draw-amount', label:'Choose amount and term',
+      render:function(){
+        return appHead(0)+'<div class="ax-form" style="width:700px">'+
+          '<h2 class="ax-q">Take a Loan</h2>'+
+          '<h3 style="font-size:16px;margin:24px 0 10px">Select Loan Amount</h3>'+
+          '<div class="ax-inwrap"><input class="ax-input" value="$ 10,000.00" aria-label="Loan amount"></div>'+
+          '<div class="ax-slider"><div class="ax-range"><span>$500.00</span><span>$50,000.00</span></div>'+
+          '<div class="ax-sliderbar"><i style="width:20%"></i><span class="ax-knob" style="left:20%"></span><span class="ax-knoblabel" style="left:20%">$10,000.00</span></div></div>'+
+          '<h3 style="font-size:16px;margin:56px 0 8px">Select a Monthly Installment Loan Term</h3>'+
+          '<p class="ax-help">Once selected, your repayment schedule will appear. <span class="ax-a">Learn about early repayment benefits</span> and how you may save on fees.</p>'+
+          term(6,'$360.00','$10,360.00')+term(12,'$660.00','$10,660.00')+term(18,'$900.00','$10,900.00')+term(24,'$1,080.00','$11,080.00')+
+          '<p style="font-size:14px;color:#333;margin:18px 0 20px">This Loan Requires a Personal Guarantee <span class="ax-a" style="display:inline-flex;vertical-align:-3px">'+I.info+'</span></p>'+
+          '<button type="button" class="ax-btn" data-act="next">Continue</button>'+
+          '<p class="ax-legal">The Business Line of Credit offers access to a commercial line of credit. Decisions on the line amount, loan fees and available installment terms are based on a review of the business and its overall financial profile. All loans are subject to credit approval, are secured by assets of the borrower and require a personal guarantee. Monthly loan fees are charged as a percentage of the original principal for months in which the loan has an outstanding balance. Repaying the principal early means the fees for later months are not charged.</p>'+
+          '</div>'+footer();
+      },
+      rail:{ t:'The price is on the screen before you borrow',
+        b:'Amount on a slider, then every term with its total fees and total amount side by side. The cost of the decision is visible at the point of the decision. Showing terms the customer cannot take, greyed with the threshold stated rather than hidden, was a deliberate choice: an option that disappears leaves someone guessing why, while a stated threshold tells them what would change the answer.',
+        rec:'Fee figures here are illustrative, scaled from the 0.45% monthly fee visible in the recorded schedule.' } },
+
+    { id:'draw-schedule', label:'Repayment schedule',
+      render:function(){
+        var rows='', d=new Date(2026,9,14);
+        for (var i=0;i<8;i++){
+          var dt=new Date(d.getFullYear(), d.getMonth()+i, 13+(i%2));
+          rows+='<tr><td>'+dt.toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'})+'</td><td>$416.67</td><td>$45.00 (0.45%)</td><td>$461.67</td></tr>';
+        }
+        return appHead(0)+'<div class="ax-form" style="width:700px">'+goBack()+
+          '<h2 class="ax-q">Your repayment schedule</h2>'+loanHead()+
+          '<table class="ax-sched"><thead><tr><th>Payment date</th><th>Principal</th><th>Loan fee</th><th>Total</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+          '<p class="ax-help" style="margin-top:20px">Repay early and the fees for later months are not charged.</p>'+
+          '<button type="button" class="ax-btn" data-act="next">Continue</button></div>'+footer();
+      },
+      rail:{ t:'The whole schedule, before committing',
+        b:'Every instalment, split into principal and fee, for the full term. Nothing about the cost of the loan waits until after the customer has taken it.' } },
+
+    { id:'draw-purpose', label:'How the funds will be used',
+      render:function(){
+        return appHead(0)+'<div class="ax-form" style="width:700px">'+goBack()+
+          '<h2 class="ax-q">Take a Loan</h2>'+loanHead()+
+          '<p style="font-size:15px;margin:0 0 12px">How do you plan to use the funds?</p>'+
+          '<div class="ax-drop"><div class="head">&check; Select from dropdown</div>'+
+          USES.map(function(u,i){ return '<div class="'+(i===0?'on':'')+'">'+u+'</div>'; }).join('')+'</div>'+
+          '<div style="margin-top:24px">'+cont()+'</div></div>'+footer();
+      },
+      rail:{ t:'One question that pays for itself twice',
+        b:'Asking what the money is for informs the credit decision and tells the platform what the business is about to do. A customer buying inventory and a customer hiring are at different points in their year, and the insights and offers that follow can reflect that.' } },
+
+    { id:'draw-deposit', label:'Where the funds land',
+      render:function(){
+        return appHead(0)+'<div class="ax-form" style="width:700px">'+goBack()+
+          '<h2 class="ax-q">Take a Loan</h2>'+loanHead()+
+          '<h3 style="font-size:16px;margin:0 0 10px">Select where you want the funds deposited</h3>'+
+          '<p class="ax-help" style="margin-bottom:6px">Linked accounts not used for business will not appear as an option.</p>'+
+          '<p class="ax-help">Please note: the account you select for this deposit may also be used for repayment in accordance with the terms of your loan agreement.</p>'+
+          '<div class="ax-acctpick"><input type="radio" name="ax-dep" checked aria-label="First Harbor Bank 4410"><span class="ax-insico">'+I.bank+'</span><div><b>First Harbor Bank *4410</b><small>ACH, arrives in 2 to 3 business days</small></div></div>'+
+          '<div class="ax-sub offer">'+I.dollar+'<p>Deposit into an American Express&reg; Business Checking account instead and the funds arrive instantly. Terms apply.</p><span class="ax-a">Open an account</span></div>'+
+          '<div style="margin-top:8px"><span class="ax-a">+ Link Account '+I.right+'</span></div>'+
+          '<p class="ax-help" style="margin-top:18px">By clicking Continue you confirm that:</p>'+
+          '<ol class="ax-terms"><li>The bank account selected above is established and is used for business purposes by the business that holds the line of credit.</li>'+
+          '<li>You authorise electronic debit entries to the account selected above for the repayment amount due on a payment date, plus any past due amounts and fees.</li></ol>'+
+          '<div style="margin-top:20px">'+cont()+'</div></div>'+footer();
+      },
+      rail:{ t:'Where the suite pays off',
+        b:'This is the screen the cross-product argument lives on. Into an external account the money takes 2 to 3 days. Into an American Express Business Checking account it settles instantly, which is why the checking offer sits right here rather than in a marketing email. Small business owners want their money now.',
+        chips:['Instant into a Business Checking account, 2 to 3 days to an external one'] } },
+
+    { id:'draw-verify', label:'Verify the account',
+      render:function(){
+        return appHead(0)+'<div class="ax-form">'+goBack()+
+          '<h2 class="ax-q">Verify First Harbor Bank *4410</h2>'+
+          '<p class="ax-help">For your security, accounts must be verified via routing and account numbers before money can be transferred into or out of them.</p>'+
+          '<label class="ax-label" for="ax-routing">Routing Number</label><div class="ax-inwrap"><input id="ax-routing" class="ax-input" value="" placeholder=""></div>'+
+          '<label class="ax-label" for="ax-acctno">Account Number</label><div class="ax-inwrap"><input id="ax-acctno" class="ax-input" value=""></div>'+
+          '<label class="ax-label" for="ax-acctno2">Confirm Account Number</label><div class="ax-inwrap"><input id="ax-acctno2" class="ax-input" value=""></div>'+
+          '<div style="margin:24px 0 0"><button type="button" class="ax-btn" data-act="next">Verify Account</button></div>'+
+          '<details class="ax-why"><summary>Where Can I Find This?</summary><p>Routing and account numbers appear on a cheque, and in the account details screen of most online banking services.</p></details>'+
+          '</div>'+footer();
+      },
+      rail:{ t:'The friction point, and what was done about it',
+        b:'Connecting and verifying a bank account was the single biggest drop-off in the whole experience. A flag fired to sales when a customer sat here for more than a few minutes, and sales called with the live session open in front of them, so they could see exactly what the customer saw. Click-through on that step went from 51% to 65%+.',
+        chips:['Bank connection click-through 51% to 65%+'],
+        rec:'This is where the recording stops: the account could not be verified on the day.' } },
+
+    { id:'draw-link', label:'Linking consent',
+      render:function(){
+        return appHead(0)+'<div class="ax-center" style="width:640px">'+
+          '<span class="ax-pico ax-a">'+I.bank+'</span>'+
+          '<h2 class="ax-ctitle">Link The Checking Accounts For Your Business</h2>'+
+          '<div style="text-align:left;margin:26px 0 0">'+
+          '<div class="ax-linkbenefit">'+I.info+'<span>Data encryption helps protect your financial data.</span></div>'+
+          '<div class="ax-linkbenefit">'+I.person+'<span>We do not store your login account credentials.</span></div>'+
+          '<div class="ax-linkbenefit">'+I.chart+'<span>Get an in-depth view of your cash flow and expenses, since linked accounts are automatically included in Insights.</span></div>'+
+          '<p class="ax-help" style="margin-top:22px">By selecting Continue, you authorise us to access, collect, use and store your business bank account information, to evaluate creditworthiness and eligibility, to personalise your experience including insights, offers and product recommendations, and to improve the products and services offered.</p>'+
+          '</div><button type="button" class="ax-btn full" data-act="next">Continue</button></div>'+footer();
+      },
+      rail:{ t:'Education is what moved the number',
+        b:'The messaging on this screen was tested repeatedly. Saying plainly what is collected, that credentials are not stored, and that linked accounts feed the cash flow view, is what turned linking from a hurdle into something worth doing. The data set it produces is what the forecast and the insights run on, and it is what keeps the line of credit under review without anyone asking the customer for a statement.',
+        chips:['Broken or expired connections cut from around 25% to under 18%'] } }
+  ];
+
+  var FLOWS = { application: APP, dashboard: DASH, insights: INS, draw: DRAW };
+  var flow = 'application';
+  var SCR = APP;
+
+  var root, vp, rail, scaler, sel, bPrev, bNext, idx = 0, inited = false, editing = false, timers = [];
+  function idOf(id){ for (var i = 0; i < SCR.length; i++) if (SCR[i].id === id) return i; return -1; }
+  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+
+  function fillSelect(){
+    sel.innerHTML = SCR.map(function(s, i){ return '<option value="'+i+'">'+(i+1)+'. '+s.label+'</option>'; }).join('');
+  }
+  var INTRO = {
+    application: 'Rebuilt screen by screen from a recording of the live flow, using a synthetic customer. This customer starts from a pre-approved offer on the dashboard, wanting a line of credit. Click through it as they would, or step through with the controls under the frame.',
+    dashboard: 'The dashboard once the line of credit is open. Cash flow first, every internal and external account in one view, and the servicing and marketing messages sitting inside the account list rather than arriving by email.',
+    draw: 'Drawing on the line once it is open. The cost of the loan is on the screen before the customer commits, and where the money lands is where the suite pays off.',
+    insights: 'Where the cash flow data earns its keep. Money in and money out across every connected account, categorised, forecast ahead, and turned into prompts the customer can act on.'
+  };
+  function setIntro(){
+    var el = root.querySelector('#scr-lede');
+    if (el && INTRO[flow]) el.textContent = INTRO[flow];
+  }
+  /* Read flow and screen out of the hash. Returns true when something changed. */
+  function applyHash(force){
+    var m = location.hash.match(/^#screens\/(application|dashboard|insights|draw)\/([\w-]+)/);
+    if (!m) return false;
+    var wantFlow = m[1], changed = false;
+    if (FLOWS[wantFlow] && wantFlow !== flow) { setFlow(wantFlow, true); changed = true; }
+    var i = idOf(m[2]);
+    if (i > -1 && (i !== idx || changed || force)) { idx = i; changed = true; }
+    if (changed) go(idx);
+    return changed;
+  }
+
+  function setFlow(name, quiet){
+    if (!FLOWS[name]) return;
+    flow = name; SCR = FLOWS[name]; idx = 0; editing = false;
+    Array.prototype.forEach.call(root.querySelectorAll('[data-flow]'), function(b){
+      var on = b.getAttribute('data-flow') === name;
+      b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    fillSelect();
+    setIntro();
+    if (!quiet) go(0);
+  }
+
+  /* The print strip must exist even if the Screens view is never opened: someone can read
+     the case study and hit print without ever switching tab. Built at load, and again on
+     beforeprint as a safety net, rather than only when the view first shows. */
+  function buildPrint(){
+    var el = document.querySelector('#screens .scr-print');
+    if (!el || el.children.length) return;
+    var rows = [];
+    Object.keys(FLOWS).forEach(function(f){
+      FLOWS[f].forEach(function(sc){
+        rows.push('<li><h4>'+sc.label+': '+sc.rail.t+'</h4><p>'+sc.rail.b+(sc.rail.chips ? ' ('+sc.rail.chips.join('; ')+')' : '')+'</p></li>');
+      });
+    });
+    el.innerHTML = rows.join('');
+  }
+
+  function fit(){
+    if (!scaler) return;
+    var s = Math.min(1, scaler.clientWidth / VW);
+    vp.style.transform = 'scale('+s+')';
+    scaler.style.height = Math.round(VH*s)+'px';
+  }
+
+  function renderRail(){
+    var sc = SCR[idx], r = sc.rail || {};
+    var chips = (r.chips || []).map(function(x){ return '<li>'+x+'</li>'; }).join('');
+    rail.innerHTML = '<p class="scr-rk">Screen '+(idx+1)+' of '+SCR.length+' &middot; '+sc.label+'</p>'+
+      '<h3>'+r.t+'</h3><p>'+r.b+'</p>'+(chips ? '<ul class="scr-chips">'+chips+'</ul>' : '')+(r.rec ? '<p class="scr-rec">'+r.rec+'</p>' : '');
+  }
+
+  function updateValid(){
+    var sc = SCR[idx], ok = sc.valid ? !!sc.valid() : true;
+    Array.prototype.forEach.call(vp.querySelectorAll('[data-act="next"].ax-btn'), function(b){ b.disabled = !ok; });
+  }
+
+  function render(keepScroll){
+    var y = vp.scrollTop, active = document.activeElement, activeId = active && vp.contains(active) ? active.id : null;
+    vp.innerHTML = SCR[idx].render();
+    vp.scrollTop = keepScroll ? y : 0;
+    if (activeId) { var el = vp.querySelector('#'+activeId); if (el) { el.focus({preventScroll:true}); if (el.setSelectionRange && el.type === 'text') { var n = el.value.length; el.setSelectionRange(n, n); } } }
+    updateValid();
+  }
+
+  /* Answers the synthetic customer gives. Filled in for any step skipped by jumping ahead,
+     so later screens (the review page especially) never show blanks. */
+  var ANSWERS = { eligibility:{eligible:true}, structure:{structure:'LLC'}, industry:{industry:'Wholesale Trade, Durable Goods'},
+    role:{role:'Owner'}, owners:{owners:'No'} };
+  function fillSkipped(target){
+    for (var j = 0; j < target; j++) {
+      var a = ANSWERS[SCR[j].id];
+      if (!a) continue;
+      for (var k in a) if (!S[k]) S[k] = a[k];
+    }
+  }
+
+  function go(i){
+    clearTimers();
+    idx = Math.max(0, Math.min(SCR.length-1, i));
+    fillSkipped(idx);
+    render(false);
+    renderRail();
+    sel.value = String(idx);
+    bPrev.disabled = idx === 0;
+    bNext.disabled = idx === SCR.length-1;
+    var h = '#screens/'+flow+'/'+SCR[idx].id;
+    if (location.hash !== h && (!location.hash || location.hash.indexOf('#screens') === 0)) history.replaceState(null, '', h);
+    if (SCR[idx].enter) SCR[idx].enter();
+  }
+
+  function act(a){
+    var sc = SCR[idx];
+    if (a === 'next') {
+      if (editing && sc.step) { editing = false; return go(idOf('review')); }
+      if (sc.id === 'address') return go(idOf('verify'));
+      return go(idx+1);
+    }
+    if (a === 'back') return go(sc.id === 'verify' ? idOf('address') : idx-1);
+    if (a === 'ssn') { S.showSsn = !S.showSsn; return render(true); }
+    if (a === 'done') { rail.classList.remove('flash'); void rail.offsetWidth; rail.classList.add('flash'); return; }
+    if (a.indexOf('edit:') === 0) { editing = true; return go(idOf(a.slice(5))); }
+  }
+
+  function init(el){
+    root = el;
+    vp = root.querySelector('.scr-viewport');
+    rail = root.querySelector('.scr-rail');
+    scaler = root.querySelector('.scr-scaler');
+    sel = root.querySelector('[data-nav="jump"]');
+    bPrev = root.querySelector('[data-nav="prev"]');
+    bNext = root.querySelector('[data-nav="next"]');
+
+    fillSelect();
+    buildPrint();
+    root.querySelector('.scr-flows').addEventListener('click', function(e){
+      var b = e.target.closest('[data-flow]');
+      if (b && !b.disabled) setFlow(b.getAttribute('data-flow'));
+    });
+
+    root.querySelector('.scr-controls').addEventListener('click', function(e){
+      var b = e.target.closest('[data-nav]'); if (!b || b.disabled || b.tagName === 'SELECT') return;
+      var n = b.getAttribute('data-nav');
+      if (n === 'prev') go(idx-1);
+      if (n === 'next') { editing = false; go(idx+1); }
+      if (n === 'restart') { reset(); editing = false; go(0); }
+    });
+    sel.addEventListener('change', function(){ editing = false; go(parseInt(sel.value, 10)); });
+
+    vp.addEventListener('click', function(e){
+      var ind = e.target.closest('[data-ind]');
+      if (ind) { S.industry = ind.getAttribute('data-ind'); S.indq = ''; render(true); return; }
+      var b = e.target.closest('[data-act]');
+      if (!b || b.disabled) return;
+      e.preventDefault();
+      act(b.getAttribute('data-act'));
+    });
+    function onField(e){
+      var t = e.target, k = t.getAttribute && t.getAttribute('data-k');
+      if (!k) return;
+      if (t.type === 'radio' && !t.checked) return;
+      S[k] = t.type === 'checkbox' ? t.checked : t.value;
+      if (k === 'indq') { S.industry = ''; var list = vp.querySelector('.ax-talist'); render(true); var l2 = vp.querySelector('.ax-talist'); if (l2) l2.hidden = false; return; }
+      if (k === 'homeSame' || k === 'owners') return render(true);
+      updateValid();
+    }
+    vp.addEventListener('input', onField);
+    vp.addEventListener('change', onField);
+    vp.addEventListener('focusin', function(e){
+      if (e.target.id === 'ax-industry') { var l = vp.querySelector('.ax-talist'); if (l) l.hidden = false; }
+    });
+    vp.addEventListener('focusout', function(e){
+      var ta = vp.querySelector('.ax-ta');
+      if (ta && ta.contains(e.target) && !(e.relatedTarget && ta.contains(e.relatedTarget))) {
+        setTimeout(function(){ var l = vp.querySelector('.ax-talist'); if (l && !vp.querySelector('.ax-ta').contains(document.activeElement)) l.hidden = true; }, 120);
+      }
+    });
+    vp.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' && e.target.classList && e.target.classList.contains('ax-input')) {
+        var b = vp.querySelector('[data-act="next"].ax-btn'); if (b && !b.disabled) { e.preventDefault(); act('next'); }
+      }
+    });
+
+    window.addEventListener('hashchange', function(){ applyHash(false); });
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(scaler);
+    else window.addEventListener('resize', fit);
+    inited = true;
+  }
+
+  try { buildPrint(); } catch (e) {}
+  if (window.addEventListener) window.addEventListener('beforeprint', function(){ try { buildPrint(); } catch (e) {} });
+
+  window.ScreensView = {
+    onShow: function(el){
+      el = el || document.getElementById('screens');
+      if (!inited) init(el);
+      if (!applyHash(true)) go(idx);
+      setIntro();
+      fit();
+    },
+    onHide: function(){ clearTimers(); }
+  };
+})();
+</script>
+<!-- SCREENS:END -->
+
+<!-- PRESS VIEW -->
+<div id="press" class="view cs" role="tabpanel" aria-labelledby="tab-press" hidden>
+
+  <section class="press-hero cs-grid">
+    <div class="wrap">
+      <p class="kicker">Press</p>
+      <h1>What the market saw</h1>
+      <p class="lede">
+        Independent coverage of the platform, from the January 2023 launch through to the
+        features that followed.
+      </p>
+    </div>
+  </section>
+
+  <section class="chapter" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+
+      <section class="ptl-phase">
+        <h2>Launch <span>January to February 2023</span></h2>
+        <ol class="ptl-list">
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-mono">BUSINESS WIRE</p>
+              <a class="ptl-hl" href="https://www.businesswire.com/news/home/20230131005085/en/American-Express-Launches-New-Cash-Flow-Management-Hub-Expanding-Its-Powerful-Backing-for-Small-Businesses" target="_blank" rel="noopener">American Express Launches New Cash Flow Management Hub for Small Businesses</a>
+              <p class="ptl-meta"><span class="fmt">Release</span>American Express</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">Bloomberg</p>
+              <a class="ptl-hl" href="https://www.bloomberg.com/news/videos/2023-01-31/american-express-expands-offerings-to-small-businesses" target="_blank" rel="noopener">American Express Expands Offerings to Small Businesses</a>
+              <p class="ptl-meta"><span class="fmt">Video</span>Interview with Anna Marrs</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">Forbes</p>
+              <a class="ptl-hl" href="https://www.forbes.com/sites/tomgroenfeldt/2023/01/31/american-express-launches-financial-management-tools-for-small-businesses/" target="_blank" rel="noopener">American Express Launches Financial Management Tools for Small Businesses</a>
+              <p class="ptl-meta">Tom Groenfeldt</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">Associated Press</p>
+              <a class="ptl-hl" href="https://www.usnews.com/news/business/articles/2023-01-31/american-express-launches-products-for-small-businesses" target="_blank" rel="noopener">American Express Launches Products for Small Businesses</a>
+              <p class="ptl-meta">Carried by U.S. News</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">PYMNTS</p>
+              <a class="ptl-hl" href="https://www.pymnts.com/spend-management/2023/american-express-launches-cash-flow-management-hub-for-small-businesses/" target="_blank" rel="noopener">American Express Launches Cash Flow Management Hub for Small Businesses</a>
+              <p class="ptl-meta">Anna Marrs on a digital one-stop shop for Small Business</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-01-31">31 Jan 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">Axios Pro</p>
+              <a class="ptl-hl" href="https://www.axios.com/pro/fintech-deals/2023/01/31/amex-kabbage-cash-flow-management" target="_blank" rel="noopener">American Express launches cash flow management hub</a>
+              <p class="ptl-meta">Fintech Deals, subscriber only</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-02-01">1 Feb 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">Finovate</p>
+              <a class="ptl-hl" href="https://finovate.com/american-express-retires-the-kabbage-brand-with-the-launch-of-business-blueprint/" target="_blank" rel="noopener">American Express Retires the Kabbage Brand with the Launch of Business Blueprint</a>
+              <p class="ptl-meta">Julie Muhn</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-02-02">2 Feb 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">The Paypers</p>
+              <a class="ptl-hl" href="https://thepaypers.com/online-mobile-banking/amex-launches-cash-flow-management-hub--1260159" target="_blank" rel="noopener">AmEx Launches Cash Flow Management Hub</a>
+              <p class="ptl-meta">Irina Ionescu</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="ptl-phase">
+        <h2>Enhancements <span>September 2023</span></h2>
+        <ol class="ptl-list">
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-09-26">26 Sep 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">PYMNTS</p>
+              <a class="ptl-hl" href="https://www.pymnts.com/spend-management/2023/american-express-adds-external-accounts-integration-to-digital-cash-flow-management-hub/" target="_blank" rel="noopener">American Express Adds External Accounts Integration to Digital Cash Flow Management Hub</a>
+              <p class="ptl-meta">External account linking, expense alerts, mobile check deposit and scheduled payments</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="ptl-phase">
+        <h2>Profiles and reviews <span>2023 to 2025</span></h2>
+        <ol class="ptl-list">
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2023-05-08">8 May 2023</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-mono">CO by U.S. Chamber of Commerce</p>
+              <a class="ptl-hl" href="https://www.uschamber.com/co/good-company/the-leap/american-express-business-blueprint-designed-to-help-smbs-grow" target="_blank" rel="noopener">American Express Business Blueprint VP on How Its New Platform Is Designed to Help SMBs Grow</a>
+              <p class="ptl-meta">Mark Hamstra, interviewing Brett Sussman</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2024-08-15">15 Aug 2024</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">PYMNTS</p>
+              <a class="ptl-hl" href="https://www.pymnts.com/news/b2b-payments/2024/amex-small-business-exec-sees-embedded-payments-helping-cash-flow-management/" target="_blank" rel="noopener">Amex Small Business Exec Sees Embedded Payments Helping Cash Flow Management</a>
+              <p class="ptl-meta">Interview with Brett Sussman</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time>Undated</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">Forbes Advisor</p>
+              <a class="ptl-hl" href="https://www.forbes.com/advisor/business-loans/american-express-business-blueprint-review/" target="_blank" rel="noopener">American Express Business Blueprint Line of Credit Review</a>
+              <p class="ptl-meta"><span class="fmt">Review</span>Pros, cons and verdict</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time datetime="2025">c. 2025</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-serif">Business Credit Workshop</p>
+              <a class="ptl-hl" href="https://www.businesscreditworkshop.me/articles/abbage-american-express/" target="_blank" rel="noopener">American Express Business Blueprint Review (Formerly Kabbage)</a>
+              <p class="ptl-meta"><span class="fmt">Review</span>Independent, and critical of the Android app</p>
+            </div>
+          </li>
+          <li class="ptl-item">
+            <div class="ptl-date"><time>Undated</time></div>
+            <div class="ptl-entry">
+              <p class="ptl-outlet o-caps">American Express</p>
+              <a class="ptl-hl" href="https://www.youtube.com/watch?v=lfaKvHq2FTY" target="_blank" rel="noopener">How I Made It with American Express Business Blueprint: Debbie Rechtschaffer</a>
+              <p class="ptl-meta"><span class="fmt">Video</span>Customer story</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><b>The Relationship Platform</b> &middot; Elspeth Green</p>
+    <p>
+      Independent case study. Not affiliated with or endorsed by American Express. American
+      Express and its product names are trademarks of American Express. Product screens are
+      reconstructions using synthetic data. Company figures are from American Express public
+      filings.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var VIEWS=['screens','press'];
+  var current=null;
+
+  function viewFromHash(){
+    var h=location.hash.replace(/^#/,'');
+    if(h.indexOf('screens')===0) return 'screens';
+    if(h==='press') return 'press';
+    return 'screens';
+  }
+
+  function route(){
+    var next=viewFromHash();
+    VIEWS.forEach(function(id){
+      var el=document.getElementById(id), tab=document.getElementById('tab-'+id);
+      if(!el) return;
+      var wasVisible=!el.hidden, on=(id===next);
+      el.hidden=!on;
+      if(tab){tab.setAttribute('aria-selected',on?'true':'false');tab.tabIndex=on?0:-1;}
+      if(id==='screens'){
+        var api=window.ScreensView;
+        if(api&&on&&!wasVisible&&typeof api.onShow==='function') api.onShow(el);
+        if(api&&!on&&wasVisible&&typeof api.onHide==='function') api.onHide(el);
+      }
+    });
+    if(current!==null&&current!==next) window.scrollTo(0,0);
+    current=next;
+    document.title=next==='screens'?'Screens | The Relationship Platform':next==='press'?'Press | The Relationship Platform':'Screens | The Relationship Platform';
+  }
+
+  function go(view){
+    if(view==='screens'&&viewFromHash()==='screens') return;
+    var target='#'+view;
+    if(location.hash===target){route();return;}
+    location.hash=target;
+  }
+
+  var tabs=[].slice.call(document.querySelectorAll('.site-header .tab'));
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){go(t.dataset.view)});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(!d) return;
+      e.preventDefault();
+      var n=tabs[(i+d+tabs.length)%tabs.length];
+      n.focus();go(n.dataset.view);
+    });
+  });
+  window.addEventListener('hashchange',route);
+
+  /* Era switch on the platform map */
+  var stack=document.getElementById('stack');
+  var legend=document.getElementById('legend');
+  var changes=document.getElementById('changes');
+  var eraButtons=[].slice.call(document.querySelectorAll('.era-switch button'));
+  eraButtons.forEach(function(b){
+    b.addEventListener('click',function(){
+      eraButtons.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      stack.setAttribute('data-era',b.dataset.era);
+      var eco=document.getElementById('eco');
+      if(eco) eco.setAttribute('data-era',b.dataset.era);
+      var scale=b.dataset.era==='scale';
+      legend.style.visibility=scale?'visible':'hidden';
+      changes.hidden=!scale;
+    });
+  });
+
+  /* Left-hand section nav: highlight the section in view */
+  var navLinks=[].slice.call(document.querySelectorAll('.side-nav a'));
+  if(navLinks.length){
+    var navSections=navLinks.map(function(a){return document.getElementById(a.dataset.section)}).filter(Boolean);
+    if('IntersectionObserver' in window){
+      var navIo=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          var link=navLinks.filter(function(a){return a.dataset.section===en.target.id})[0];
+          if(!link) return;
+          if(en.isIntersecting) navLinks.forEach(function(a){a.classList.toggle('active',a===link)});
+        });
+      },{rootMargin:'-40% 0px -55% 0px',threshold:0});
+      navSections.forEach(function(el){navIo.observe(el)});
+    }
+  }
+
+  /* Reveal on scroll */
+  var items=[].slice.call(document.querySelectorAll('.cs .reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    items.forEach(function(el){io.observe(el)});
+  }else{
+    items.forEach(function(el){el.classList.add('in')});
+  }
+
+  route();
+})();
+</script>
+</body>
+</html>
