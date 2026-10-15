@@ -603,7 +603,7 @@ img{max-width:100%}
 .cs .chapter:not(.navy) .mchips span{color:var(--cs-muted)}
 @media (max-width:760px){.cs .mchips{grid-template-columns:1fr}}
 
-.cs .ways{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cs .ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .cs .way{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--cs-radius);padding:24px;display:flex;flex-direction:column}
 .cs .way small{font-family:var(--cs-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#8FB6F0}
 .cs .way b{font-family:var(--cs-serif);font-weight:500;font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.05;color:#fff;margin:14px 0 6px}
@@ -678,6 +678,9 @@ html.pm .cs .callout p{max-width:none}
 .cs #move-experience .dash-wrap{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
 html.pm .cs #move-experience .chapter-head{margin-bottom:28px}
 html.pm .cs #move-experience h2{font-size:2.6rem}
+#case-study .chapter-head{grid-template-columns:1fr;align-items:start}
+#case-study .chapter-head h2{max-width:none}
+#case-study #goal .chapter-head{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:end}
 .cs .appx-intro{padding-block:clamp(48px,7vw,88px) 0}
 .cs .appx-intro .note{max-width:70ch;color:var(--cs-muted)}
 
@@ -787,9 +790,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
       <div>
         <p class="kicker">American Express &middot; The Relationship Platform &middot; 2020 to 2025</p>
         <h1>Where a Small Business goes <em>daily</em> to manage their Cash Flow</h1>
-        <p class="lede">
-          How American Express turned an acquisition into a primacy-driving platform for Small Business, then a net-new revenue engine, and embedded a startup inside an enterprise operating model to unlock ~3x in velocity. The strategy, the architecture, the operating model and the results.
-        </p>
         <p class="byline">A case study by <b>Elspeth Green</b></p>
       </div>
 
@@ -850,10 +850,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">The results</p>
           <h2 id="h-headline">A primacy platform, and a net-new revenue engine</h2>
         </div>
-        <p class="lede reveal">
-          American Express set out to win the primary financial relationship with Small
-          Business. In four years, these are the numbers that moved.
-        </p>
       </div>
 
       <p class="hl-label reveal">Top-line growth</p>
@@ -867,7 +863,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
         <div>
           <p class="kicker">The primacy scoreboard</p>
           <h3>More products per customer. More customers transacting.</h3>
-          <p style="color:var(--cs-on-navy-muted)">Acquisition compounded at 51% a year over the same period, so the engagement gains held while the customer base grew.</p>
           <p class="bar-key"><span><i style="background:rgba(255,255,255,.34)"></i>Before</span><span><i style="background:var(--bp-blue)"></i>After</span></p>
         </div>
         <div class="bars">
@@ -894,12 +889,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">The background</p>
           <h2 id="h-company">A payments network that runs on transactions</h2>
         </div>
-        <p class="lede reveal">
-          American Express is a global, closed-loop payments network and card issuer. It earns
-          through fees and interest on a high-volume, high-frequency transaction model. Every
-          point of growth depends on acquiring, underwriting, servicing and engaging tens of
-          millions of Card Members at scale.
-        </p>
       </div>
 
       <div class="stats reveal">
@@ -985,10 +974,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">How it won</p>
           <h2 id="h-moves">Five big moves</h2>
         </div>
-        <p class="lede reveal">
-          Each one on its own was a project. Together they changed what American Express was to a
-          Small Business.
-        </p>
       </div>
 
       <ol class="moves-list reveal">
@@ -1009,11 +994,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">Move 1 &middot; Structure</p>
           <h2 id="h-move-structure">Organised by customer segment, not by product</h2>
         </div>
-        <p class="lede reveal">
-          Two restructures. First, Global Commercial Services moved from product verticals to
-          customer segments. Then, inside Small Business, one relationship platform took
-          ownership of everything every product shared.
-        </p>
       </div>
 
       <div class="rs rs-a reveal">
@@ -1047,7 +1027,7 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <div class="rs-prod">Business Cards</div>
           <div class="rs-prod">Line of Credit</div>
           <div class="rs-prod">Business Checking</div>
-          <div class="rs-prod loose">Payment Accept<small>loosely owned</small></div>
+          <div class="rs-prod loose">Payment Accept</div>
           <div class="rs-prod platform">Relationship Platform<small>a product in its own right</small></div>
           <div class="rs-owned">
             <p>Owned by the platform, used by every product</p>
@@ -1080,11 +1060,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">Move 2 &middot; Experience</p>
           <h2 id="h-move-experience">Redesigned end to end around what customers came to do</h2>
         </div>
-        <p class="lede reveal">
-          Product menus gave way to quick actions. Every account, at American Express or another
-          bank, sat in one view with cash flow first. The human side moved with it: frontline and
-          back office worked from one servicing platform.
-        </p>
       </div>
 
       <div class="dash-wrap reveal">
@@ -1126,12 +1101,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">Move 3 &middot; Cash flow as a service</p>
           <h2 id="h-move-cashflow">Cash flow, not cards, at the centre</h2>
         </div>
-        <p class="lede reveal">
-          A business runs on cash flow across every account it holds, including accounts at other
-          banks. Bringing all of it into one data set, and forecasting ahead, gave owners a reason
-          to come back daily. It also gave credit, marketing and product one shared picture of the
-          customer.
-        </p>
       </div>
 
       <div class="fan reveal" style="margin-top:0">
@@ -1189,11 +1158,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">Move 4 &middot; One application</p>
           <h2 id="h-move-application">One seamless application for every product</h2>
         </div>
-        <p class="lede reveal">
-          Every product had its own application, rules and pend process. The business went after
-          all of them at once: one application across Lending, Checking and Payments, with the
-          rules behind it streamlined.
-        </p>
       </div>
 
       <div class="app-proof cs-grid reveal" style="margin-top:0">
@@ -1225,17 +1189,12 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">Move 5 &middot; Ways of working</p>
           <h2 id="h-move-operating">A startup inside a regulated Fortune 100</h2>
         </div>
-        <p class="lede reveal">
-          A new structure does not make anyone faster on its own. The team also changed how it
-          planned, chose what to build and shipped.
-        </p>
       </div>
 
       <div class="ways reveal">
         <div class="way"><small>Startup principles</small><h3>Systems before headcount</h3><p>Build and show, rather than propose and wait. Minimum viable structure. Reuse and modularity as a team belief.</p></div>
         <div class="way"><small>Planning and prioritisation</small><h3>Ready, highest-value work first</h3><p>Outcomes reviewed quarterly, leading indicators weekly, and guardrails so no win broke something else.</p></div>
-        <div class="way"><small>Flexible capacity</small><b>~60%</b><i>of engineering fungible</i><p>Across Lending, Payments and Platform. Run-the-business capacity fixed and cut every year.</p></div>
-        <div class="way"><small>Velocity</small><b>10 to 2</b><i>weeks per release cycle</i><p>Five releases in the time it used to take to ship one. +25% delivery velocity.</p></div>
+        <div class="way"><small>Flexible capacity</small><b>~30%</b><i>of engineering fungible</i><p>Across Lending, Payments and Platform. Run-the-business capacity fixed and cut every year.</p></div>
       </div>
     </div>
   </section>
@@ -1248,10 +1207,6 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
           <p class="kicker">What the market saw</p>
           <h2 id="h-press-summary">Launched to national coverage</h2>
         </div>
-        <p class="lede reveal">
-          In January 2023 the platform launched publicly as American Express Business Blueprint,
-          and the Kabbage brand was retired.
-        </p>
       </div>
 
       <div class="ps reveal">
