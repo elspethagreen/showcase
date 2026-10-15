@@ -691,7 +691,7 @@ html.pm .cs #move-experience h2{font-size:2.6rem}
 html.pm,html.pm body{overflow:hidden;height:100%}
 html.pm .site-header,html.pm .site-footer,html.pm .side-nav{display:none!important}
 html.pm #case-study>section:not(.pm-slide),html.pm #press>section:not(.pm-slide){display:none}
-html.pm .pm-slide{position:fixed;inset:0;z-index:40;display:grid;place-items:center;place-content:center;overflow:hidden;padding:28px 40px 76px!important;margin:0!important}
+html.pm .pm-slide{position:fixed;inset:0;z-index:40;display:grid;place-items:center;place-content:center;overflow:hidden;padding:0 0 24px!important;margin:0!important}
 html.pm .pm-slide:not(.navy):not(.white):not(.cs-grid):not(#screens){background:var(--cs-paper)}
 html.pm .pm-slide.white{background:var(--cs-white)}
 html.pm #screens.pm-slide{background:var(--cs-paper)}
@@ -2918,7 +2918,7 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
     {view:'press',sec:'.press-hero~.chapter',parts:['.ptl-phase:nth-child(1)'],label:'Press'},
     {view:'press',sec:'.press-hero~.chapter',parts:['.ptl-phase:nth-child(2)','.ptl-phase:nth-child(3)'],label:'Press'}
   ];
-  var PM_W=1180, PM_MAX=1.6;
+  var PM_W=1180;
   var pm={on:false,i:0,step:0,box:null,ro:null,idle:0};
   var html=document.documentElement;
   var ui=document.createElement('div');
@@ -2945,13 +2945,16 @@ html.pubdeck .site-header,html.pubdeck .site-footer{display:none}
     var r=document.getElementById('screens');
     return {next:r.querySelector('[data-nav="next"]'),prev:r.querySelector('[data-nav="prev"]'),jump:r.querySelector('[data-nav="jump"]')};
   }
+  /* Slides are a 16:9 frame (1600 x 900 design units) fitted inside the window, with fixed
+     margins. Content is laid out at its design width and only ever shrinks to fit the frame,
+     so it keeps the proportions of a real slide rather than filling the screen. */
+  var PM_FRAME_W=1600, PM_FRAME_H=900, PM_SAFE_W=1360, PM_SAFE_H=720;
   function pmFit(){
     if(!pm.on||!pm.box) return;
-    var sec=pm.box.parentElement, cs=getComputedStyle(sec);
-    var aw=sec.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
-    var ah=sec.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
-    var s=Math.min(PM_MAX,aw/pm.box.offsetWidth,ah/pm.box.offsetHeight);
-    pm.box.style.setProperty('--pm-s',String(Math.max(.2,s)));
+    var sec=pm.box.parentElement;
+    var k=Math.min(sec.clientWidth/PM_FRAME_W, sec.clientHeight/PM_FRAME_H);
+    var s=Math.min(k, k*PM_SAFE_W/pm.box.offsetWidth, k*PM_SAFE_H/pm.box.offsetHeight);
+    pm.box.style.setProperty('--pm-s',String(Math.max(.15,s)));
   }
   function pmLabel(s,sec){
     if(s.view==='screens'){var f=sec.querySelector('[data-flow="'+s.flow+'"]');return 'Screens · '+(f?f.textContent:'');}
